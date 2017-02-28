@@ -1,0 +1,142 @@
+/* CSS Document */
+
+/* Index
+
+- General
+-- Headings
+-- Links
+- Structure General
+- Site Header
+-- General
+-- Text Header
+-- Image Header
+
+
+
+/* ------------------------------------------------------------------
+General
+--------------------------------------------------------------- */
+
+body {
+	color: #333;
+	font-family: proxima-nova, sans-serif;
+	font-size: 16px;
+	overflow-x:hidden;
+	margin: 0;
+}
+
+/* Headings */
+
+h1 {}
+h2 {}
+h3 {}
+h4 {}
+h5 {}
+h6 {}
+
+/* Links */
+a {
+	text-decoration: none;
+}
+
+/* ------------------------------------------------------------------
+Structure General
+--------------------------------------------------------------- */
+.wrap {
+	margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Site Header --------------------------------------------------------------- */
+
+.site-header {
+	position: relative;
+	text-align: right;
+}
+
+.site-header a {
+	color: #333;
+}
+
+.site-header:after{
+	content: '';
+	clear: both;
+	display: block;
+}
+
+.site-header ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.site-header li {
+	margin: 0;
+	padding: 0;
+}
+
+.site-header .title-area {
+	float: left;
+	width: 250px;
+	min-height: 120px;
+}
+
+.site-header .wrap {
+	position: relative;
+}
+
+.site-header .widget-area {
+	margin-left: 250px;
+}
+
+.site-header .widget-area .tremaine-header-right {
+	min-height: 40px;
+}
+
+.site-header .widget-area .widget {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.site-header .widget-area > .widget .menu:after {
+	content: '';
+	clear: both;
+	display: block;
+}
+
+.site-header .widget-area > .widget .menu > li {
+	float: left;
+}
+
+.site-header .widget-area > .widget .textwidget,
+.site-header .widget-area > .widget .menu > li > a {
+	display: block;
+	min-height: 40px;
+	line-height: 40px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-size: 0.9rem;
+	padding: 0 13px;
+}
+
+/* Image Header */
+
+.header-image .site-header .site-description {
+	display: none;
+}
+
+.header-image .site-header .site-title {
+    display: block;
+    font-size: 0;
+	margin: 0;
+}
+
+.header-image .site-header .site-title > a {
+    background-position: left center;
+    background-size: contain;
+	display: block;
+    min-height: 120px;
+    width: 100%;
+    background-repeat: no-repeat;
+	
+}

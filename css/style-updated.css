@@ -1,0 +1,732 @@
+/* Outline
+
+Headings
+Hooks
+Developments
+Document Structure
+Layouts
+- Gallery
+Modals
+- Share Modal
+- Property Modal
+Neighborhoods
+People Gallery
+Overrides
+People Profiles
+Post Gallery
+Property Listings Gallery
+Property Cards
+Property Listing
+Property Slideshow
+Widgets
+Media Queries
+
+
+/* Headings
+----------------------------------------------------------------------- */
+h2.section-heading-center {
+	color: #1e3652;
+	font-size: 3.5rem;
+	text-align: center;
+	font-weight: 500;
+	margin: 0;
+	padding: 6rem 0;
+}
+
+/* Hooks
+----------------------------------------------------------------------- */
+.always-top .tkd-column {
+    padding-top: 50px;
+}
+
+/* Developments
+----------------------------------------------------------------------- */
+.single-developments .primary-page-banner a.more-link {
+	position: absolute;
+	bottom: 50px;
+	right: 80px;
+	border: 2px solid #fff;
+	color: #fff;
+	text-transform: uppercase;
+	display: block;
+	padding: 1rem 2.5rem;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-size: 1.8rem;
+	border-radius: 3px;
+}
+.single-developments .primary-page-banner a.more-link i {
+	margin-left: 4px;
+}
+
+/* Document Structure
+----------------------------------------------------------------------- */
+
+/* Wraps */
+
+/* Layouts
+----------------------------------------------------------------------- */
+/* Gallery */
+.wovax-gallery-third .wovax-gallery-item,
+.wovax-gallery-third {
+	display: inline-block;
+	vertical-align: top;
+	width: 32.3333%;
+	margin-right: 1.5%;
+}
+.wovax-gallery-third .wovax-gallery-item:nth-child(3n),
+.wovax-gallery-third:nth-child(3n) {
+	margin-right: 0;
+}
+
+/* Modals
+----------------------------------------------------------------------- */
+
+.wx-modal-content {
+    display: none;
+}
+
+/* Share Modal */
+#tremaine-share-modal {
+	background-color: #fff;
+	border-radius: 6px;
+	-webkit-box-shadow: 0px 0px 9px 2px rgba(0,0,0,0.45);
+	-moz-box-shadow: 0px 0px 9px 2px rgba(0,0,0,0.45);
+	box-shadow: 0px 0px 9px 2px rgba(0,0,0,0.45);
+	position: absolute;
+	top: 200px;
+	padding: 30px 3rem 25px;
+}
+#tremaine-share-modal-bg {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left:0;
+}
+#tremaine-share-modal .close-share-modal {
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: #555;
+	font-size: 1.2rem;
+	padding: 8px;
+	display: block;
+}
+#tremaine-share-modal:after {
+	content: '▼';
+	text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.31);
+	color: #fff;
+	position: absolute;
+	top: 100%;
+	left: 15%;
+	font-size: 40px;
+	line-height: 28px;
+}
+
+#tremaine-share-modal .sd-content ul {
+    margin: 0 !important;
+}
+
+/* Property Modal */
+.wovax-modal .property-slideshow-nav-mobile {
+	display: none;
+}
+
+/* Image Left Modal */
+.tremaine-modal-image-left .tremaine-modal-bg-image-wrapper {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 350px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.tremaine-modal-image-left.has-image .tremaine-modal-content {
+	margin-left: 350px;
+	padding: 70px 0 40px;
+}
+
+/* Neighborhoods
+----------------------------------------------------------------------- */
+
+/* People Gallery
+----------------------------------------------------------------------- */
+.people-gallery .person-card > a > img { 
+    -webkit-filter: grayscale(100%);
+    filter: gray;
+}
+
+.people-gallery .person-card .person-contact h3 {
+	text-transform: none;
+	font-size: 2rem;
+	line-height: 2.4rem;
+}
+.people-gallery .person-card .person-contact h4 {
+	line-height: 2rem;
+}
+
+/* Overrides
+----------------------------------------------------------------------- */
+.lista_items_result_wovax:before {
+	content:'';
+	display: block;
+	clear: both;
+}
+/* People Profiles
+----------------------------------------------------------------------- */
+.person-profile .person-profile-details a {
+	color: #fff;
+	text-decoration: none;
+}
+.person-profile .person-profile-details a:hover {
+	color: #fff;
+}
+
+/* Post Gallery
+----------------------------------------------------------------------- */
+.wx-post-gallery fieldset {
+    border: none;
+	padding: 0;
+	margin: 0;
+}
+.wx-post-gallery h2 {
+	font-size: 3rem;
+    font-weight: 300;
+    color: #1f3652;
+	line-height: 42px;
+	float: left;
+}
+.wx-post-gallery .wx-gallery-controls {
+	display: block;
+	margin-left: 100px;
+	text-align: right;
+}
+.wx-post-gallery .wx-page-numbers {
+	margin: 0 8px;
+}
+.wx-post-gallery .wx-gallery-controls .wx-gallery-field {
+	display: inline-block;
+	vertical-align: top;
+	letter-spacing: 1px;
+}
+.wx-post-gallery .wx-gallery-controls > .wx-gallery-field {
+	margin-left: 25px;
+}
+.wx-post-gallery .wx-gallery-controls .wx-gallery-field.wx-sort-field {
+	/*min-width: 300px;*/
+}
+.wx-post-gallery .wx-gallery-controls .wx-gallery-field.wx-sort-field label {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 42px;
+	height: 42px;
+}
+.wx-post-gallery .wx-gallery-controls .wx-gallery-field.wx-sort-field select {
+	display: inline-block;
+	vertical-align: top;
+	width: 200px;
+	height: 42px;
+	padding: 0;
+}
+.wx-post-gallery .wx-gallery-controls .wx-gallery-field.wx-desc-field {
+	line-height: 42px;
+	height: 42px;
+}
+.wx-gallery-field.wx-arrow-button input {
+	width: 50px;
+	background-image: url(../images/arrow-right-blue.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 42px;
+	font-size: 0;
+}
+.wx-gallery-field.wx-arrow-button input:hover {
+	background-color: #42a5f5;
+}
+.wx-gallery-field.wx-page-numbers input,
+.wx-gallery-field.wx-page-numbers input:active,
+.wx-gallery-field.wx-page-numbers input:focus {
+	height: 42px;
+	line-height: 42px;
+	border: none;
+	color: #333;
+	padding: 0 1px;
+	background-color: transparent !important;
+	font-weight: normal;
+}
+.wx-gallery-field.wx-page-numbers input.wx-active {
+	font-weight: bold;
+}
+.wx-gallery-field.wx-page-numbers input:hover {
+	background-color:transparent;
+}
+.wx-gallery-field.wx-page-numbers div {
+	display: inline-block;
+	height: 42px;
+	line-height: 42px;
+	color: #333;
+	padding: 0;
+}
+.wx-gallery-paged input,
+.wx-gallery-paged input:active,
+.wx-gallery-paged input:focus {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding-left: 8px;
+    background-color: #fff;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.wx-post-gallery .wx-gallery-footer {
+	padding: 2rem 0;
+}
+
+/* Property Listings Gallery
+----------------------------------------------------------------------- */
+.property-listing-gallery .property-listing-card .property-listing-header h5 {
+	color: #073f6e;
+	font-weight: normal;
+	line-height: 2rem;
+}
+.property-listing-gallery .property-listing-card {
+	display: inline-block;
+    width: 32.33%;
+    padding: 0 10px 25px;
+    vertical-align: top;
+	box-sizing: border-box;
+	vertical-align: top;
+}
+
+
+/* Property Cards
+----------------------------------------------------------------------- */
+.property-card .property-meta:after,
+.property-card .property-details:after {
+	content:'';
+	display: block;
+	clear: both;
+}
+.property-card {
+	background-color: #f8f8f8;
+	margin-bottom: 25px;
+}
+.property-card .wx-property-image {
+	height: auto;
+}
+.property-card .wx-property-image img {
+	display: block;
+	width: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.property-card .property-details {
+	padding: 14px 0 20px;
+    border-bottom: 1px solid #dcdcdc;
+	margin: 0 30px;
+}
+.property-card .property-details li {
+	margin-right: 140px;
+	padding: 0;
+}
+.property-card .property-details li:first-child {
+	margin-right: 0;
+	float: right;
+	width: 130px;
+}
+.property-card .property-details h4 {
+	color: #073f6e;
+    font-weight: normal;
+    line-height: 2rem;
+	font-size: 1.6rem;
+	text-transform: none !important;
+	margin: 0;
+	padding: 0;
+}
+.property-card .property-details h3 {
+	font-weight: 700;
+    color: #04264c;
+    line-height: 2rem;
+	font-size: 1.5rem;
+	text-transform: none !important;
+	text-align: right;
+	margin: 0;
+	padding: 0;
+}
+.property-card .property-meta {
+	margin: 0 30px;
+	padding: 10px 0 16px;
+	font-size: 1.6rem;
+	color: #333;
+}
+.property-card .property-meta li {
+	margin-right: 110px;
+	padding: 0;
+}
+.property-card .property-meta li:first-child {
+	margin-right: 0;
+	float: right;
+	width: 110px;
+}
+.property-card .property-meta li a {
+	text-decoration: none;
+}
+.property-card .modal-content-container {
+	position: absolute;
+	top: -9999rem;
+}
+.property-quick-view {
+	text-transform: uppercase;
+	font-size: 1.25rem;
+	letter-spacing: 1px;
+}
+
+/* Property Listing
+----------------------------------------------------------------------- */
+.property-listing-detail {
+	padding-top: 120px;
+}
+
+.property-listing-detail h1 {
+	line-height: 4.2rem;
+}
+
+.property-listing-detail .simplefavorite-button {
+	background: none;
+	color: #42a5f5;
+	font-size: 2.1rem;
+	letter-spacing: 0.5px;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+	opacity: 1 !important;
+}
+
+
+
+/* Property Slideshow
+----------------------------------------------------------------------- */
+.property-slideshow-nav nav {
+	position: relative;
+	margin-top: 30px;
+}
+
+.property-slideshow-nav nav > a {
+	position: absolute;
+	width: 40px;
+	background-color: #ddd;
+	height: auto;
+	top: 20%;
+	bottom: 20%;
+	text-align: center;
+	color: #fff;
+}
+
+.property-slideshow-nav nav > a > span {
+	position: absolute;
+	display: block;
+	width: 100%;
+	top: 50%;
+	font-size: 24px;
+	line-height: 24px;
+	height: 24px;
+}
+.property-slideshow-nav nav > a > span > i {
+	font-size: 24px;
+	line-height: 24px;
+	height: 24px;
+	position: relative;
+	top: -12px;
+}
+
+.property-slideshow-nav nav > a.next {
+	right: 0;
+}
+
+.property-slideshow-nav nav > div{
+	margin: 0 50px;
+	
+	overflow: hidden;
+	position: relative;
+}
+
+.property-slideshow-nav .property-nav-slide {
+	position: absolute;
+	top: -9999rem;
+	width: 100%;
+}
+.property-slideshow-nav .property-nav-slide.is-active {
+	position: relative;
+	top: 0;
+}
+
+.property-slideshow-nav .property-nav-slide:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.property-slideshow-nav .property-thumbnail {
+	float: left;
+	padding-bottom: 21%;
+	width: 21%;
+	margin: 0 2%;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	box-sizing: border-box;
+	border-radius: 3px;
+	position: relative;
+	cursor: pointer;
+}
+
+.property-slideshow-nav .property-thumbnail.is-slide-left,
+.property-slideshow-nav .property-thumbnail.is-slide-right {
+	position: absolute;
+	top: 0;
+	right: 100%;
+	display: block;
+}
+.property-slideshow-nav .property-thumbnail.is-slide-right {
+	left: 100%;
+	right: auto;
+}
+.property-slideshow-nav .property-thumbnail.is-active:after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	border-radius: 3px;
+	border: 2px solid #42a5f6;
+	cursor: pointer;
+}
+.property-slideshow-slides {
+	position: relative;
+	overflow: hidden;
+}
+.property-slideshow-slides .property-slide img {
+	width: 100%;
+	display: block;
+}
+.property-slideshow-slides .property-slide  {
+	position: absolute;
+	top: -9999rem;
+	width: 100%;
+}
+.property-slideshow-slides .property-slide.is-active {
+	position: relative;
+	display: block;
+	top: 0;
+}
+
+
+/* Widgets
+----------------------------------------------------------------------- */
+.wovax-custom-menu-link {
+	color: #333;
+    text-decoration: none !important;
+    display: inline-block;
+    padding: 15px 10px 10px;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: 1.5rem;
+    letter-spacing: 2.4px;
+	vertical-align: top;
+	line-height: normal;
+}
+.wovax-custom-menu-link.bold {
+	font-weight: bold;
+    color: #202c49;
+}
+.wovax-custom-menu-link i {
+	color: #42a5f5;
+}
+
+
+/* Media Queries
+----------------------------------------------------------------------- */
+@media only screen and (max-width: 1250px) {
+	
+	
+	.wx-post-gallery-results-header h2 {
+		display: block !important;
+	}
+	.wx-post-gallery .wx-gallery-controls {
+    	display: block;
+		margin-left: 0;
+		text-align: left;
+	}
+	
+}
+@media screen and (max-width: 1050px) {
+	/* Layouts
+	----------------------------------------------------------------------- */
+	/* Gallery */
+	.wovax-gallery-third .wovax-gallery-item.
+	.wovax-gallery-third {
+		width: 49%;
+		margin-right: 2%;
+	}
+	.wovax-gallery-third .wovax-gallery-item:nth-child(3n),
+	.wovax-gallery-third:nth-child(3n) {
+		margin-right: 2%;
+	}.wovax-gallery-third .wovax-gallery-item:nth-child(2n),
+	.wovax-gallery-third:nth-child(2n) {
+		margin-right: 0;
+	}
+	/* Post Gallery
+	----------------------------------------------------------------------- */
+    .wx-post-gallery .wx-gallery-controls {
+		margin-left: 0;
+		text-align: left;
+	}
+	.wx-post-gallery h2 {
+		float: none;
+	}
+	.wx-post-gallery .wx-gallery-controls > .wx-gallery-field {
+		margin-left: 0;
+		margin-right: 25px;
+	}
+	/* Property Listings Gallery
+	----------------------------------------------------------------------- */
+	.property-listing-gallery .property-listing-card {
+		width: 50%;
+	}
+}
+
+@media only screen and (max-width: 1023px) {
+	
+	/* Hooks
+	----------------------------------------------------------------------- */
+	.always-top .tkd-column {
+		padding-top: 0;
+	}
+	
+}
+	
+@media screen and (max-width: 900px) {
+	
+	/* Post Gallery
+	----------------------------------------------------------------------- */
+	.wx-post-gallery .wx-gallery-controls > .wx-gallery-field {
+		margin-top: 16px;
+	}
+    .wx-post-gallery .wx-gallery-controls .wx-gallery-field.wx-sort-field {
+		display: block;
+		margin-top: 0;
+	}
+}
+
+@media only screen and (max-width: 800px) { 
+
+	/* Modals
+	----------------------------------------------------------------------- */
+	/* Property Modal */
+	.wovax-modal .property-slideshow-nav-mobile {
+		display: block;
+	}
+	.wovax-modal .property-slideshow-nav-full {
+		display: none;
+	}
+}
+@media only screen and (max-width: 700px) {
+	/* Layouts
+	----------------------------------------------------------------------- */
+	/* Gallery */
+	.wovax-gallery-third .wovax-gallery-item,
+	.wovax-gallery-third {
+		display: block;
+		width: auto;
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.wovax-gallery-third .wovax-gallery-item:nth-child(3n),
+	.wovax-gallery-third:nth-child(3n) {
+		margin-right: 0;
+	} 
+	/* Property Listings Gallery
+	----------------------------------------------------------------------- */
+	.property-listing-gallery .property-listing-card {
+		width: auto;
+		display: block;
+	}
+	
+}
+
+
+@media only screen and (max-width: 600px) { 
+	.property-slideshow-nav nav > a {
+		position: absolute;
+		width: 40px;
+		background-color: #ddd;
+		height: auto;
+		top: 0;
+		bottom: 0;
+		text-align: center;
+		color: #fff;
+	}
+}
+
+@media print {
+	
+	/* Property Listing
+	----------------------------------------------------------------------- */
+	.property-listing-detail {
+		padding-top: 40px;
+	}
+	.property-listing-detail .property-pins {
+		display: none;
+	}
+	/* Property Slideshow
+	----------------------------------------------------------------------- */
+	.property-slideshow-nav .property-nav-slide {
+		position: relative;
+		margin-bottom: 12px;
+		top: 0;
+		width: 50%;
+		float: left;
+	}
+	.property-slideshow-nav .property-thumbnail {
+		float: left;
+		padding-bottom: 21%;
+		width: 21%;
+		margin: 0 2%;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		box-sizing: border-box;
+		border-radius: 3px;
+		position: relative;
+		cursor: pointer;
+	}
+	.property-slideshow-nav nav > div {
+		margin: 0 -2%;
+	}
+	.property-slideshow-nav nav > a {
+		display:none;
+	}
+	/* Site Footer
+	----------------------------------------------------------------------- */
+	.footer-after,
+	.footer-nav,
+	.footer-before,
+	.site-footer {
+		display: none;
+	}
+}
+@page  { 
+    size: auto;   /* auto is the initial value */ 
+
+    /* this affects the margin in the printer settings */ 
+    margin: 10mm 10mm 10mm 10mm;  
+} 
+
