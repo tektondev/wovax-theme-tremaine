@@ -31,7 +31,7 @@ class Tremaine {
 		require_once 'classes/class-tremaine-shortcode.php'; // abstract class
 		require_once 'classes/class-tremaine-template.php'; // abstract class
 		require_once 'classes/class-tremaine-posttype.php'; // abstract class
-		
+		 
 		require_once 'classes/class-tremaine-import-page.php'; 
 		require_once 'classes/class-tremaine-post-type-modal.php'; 
 		require_once 'classes/class-tremaine-property-factory.php';

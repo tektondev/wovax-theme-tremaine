@@ -3,7 +3,7 @@
 	Description: Custom child theme for <a href="http://wovax.com">Wovax</a> and the <a href="http://genesistheme.com">Genesis Framework</a>.
 	Author:      Danial Bleile
 	Author URI:  http://tektondev.com
-	Version:     0.1.0
+	Version:     0.1.1
 	License:     GPL-2.0+
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	Template:    genesis
@@ -1200,6 +1200,9 @@ img.alignright,
 
 .genesis-nav-menu .sub-menu {
 	border-top: 1px solid #eee;
+	position: absolute;
+	width: 200px;
+	z-index: 9999;
 	left: -9999px;
 	opacity: 0;
 	position: absolute;
@@ -1230,11 +1233,6 @@ img.alignright,
 
 .genesis-nav-menu .menu-item:hover {
 	position: static;
-}
-
-.genesis-nav-menu .menu-item:hover > .sub-menu {
-	left: auto;
-	opacity: 1;
 }
 
 .genesis-nav-menu > .first > a {
@@ -3118,8 +3116,32 @@ input[type="submit"].tre-button-light {
 	}
 
 }
-
+@media only screen and (min-width: 1023px) {
+	.genesis-nav-menu .menu-item:hover > .sub-menu {
+		left: auto;
+		opacity: 1;
+		display: block !important;
+	}
+}
 @media only screen and (max-width: 1023px) {
+	.genesis-nav-menu .menu-item > .sub-menu {
+		border-top: 1px solid #eee;
+		position: relative;
+		left: 0;
+		opacity: 1;
+		position: relative;
+		width: auto;
+		display: none;
+	}
+	.genesis-nav-menu.mobile-menu .menu-item-has-children > a {
+		background-image: url(images/plus.png);
+		background-position: center right;
+		background-repeat: no-repeat;
+	}
+	
+	.genesis-nav-menu .menu-item > .sub-menu a {
+		width: auto;
+	}
 
 	.site-inner,
 	.wrap {
@@ -3485,9 +3507,15 @@ input[type="submit"].tre-button-light {
 	
 	.header-widget-area section,
 	.header-widget-area li,
-	.header-widget-area ul,
 	.header-widget-area a {
 		display: block !important;
+		float: none;
+		position: relative;
+		color: #42a5f5;
+	}
+	
+	.header-widget-area ul {
+		display: block;
 		float: none;
 		position: relative;
 		color: #42a5f5;

@@ -13,6 +13,50 @@ var tremaine = {
 		tremaine.share_modal.init();
 		tremaine.form.init();
 		tremaine.favorite.init();
+		tremaine.menu.init();
+		
+	},
+	
+	menu:{
+		
+		init:function(){
+			
+			tremaine.menu.events();
+			jQuery( window ).trigger('resize');
+			
+		},
+		events:function(){
+			
+			jQuery('.genesis-nav-menu .menu-item').on( 'click', 'a', function(e){ tremaine.menu.toggle_menu( e, jQuery( this ) );});
+			
+			jQuery(window).resize( function(){
+				
+				if ( jQuery( document ).width() < 1023 ){
+					
+					jQuery('.genesis-nav-menu').addClass('mobile-menu');
+					
+				} else {
+					
+					jQuery('.genesis-nav-menu').removeClass('mobile-menu');
+					
+				}
+				
+			});
+			
+		},
+		
+		toggle_menu:function( e, ic ){
+			
+			if ( jQuery( document ).width() < 1023 &&  ic.siblings('ul').length != 0 ){
+				
+				e.preventDefault();
+				e.stopPropagation()
+				
+				ic.siblings('ul').slideToggle();
+				
+			} // end if
+			
+		},
 		
 	},
 	
