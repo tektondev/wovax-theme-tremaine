@@ -11,7 +11,7 @@
         		<div class="trecolumn trecolumn-one">
             <?php echo $this->get_slideshow( false );?>
             	</div><div class="trecolumn trecolumn-two">
-                	<a href="#" class="tre-button-light">Ask a Question</a>
+                	<a href="#" class="tre-button-light show-modal tre-modal" data-modalid="modal-4072008">Ask a Question</a>
                     <ul class="property-data">
                     	<li><?php
 							echo $this->get_bed_text( true );
@@ -27,7 +27,7 @@
                         <li><a href="#" onclick="window.print();return false;"><i class="fa fa-print" aria-hidden="true"></i>Print Listing</a></li>
                         <li><a href="#" class="show-share-modal"><i class="fa fa-share-square-o" aria-hidden="true"></i>Share Listing</a></li>
                     </ul>
-                    <a href="#" class="tre-button-light">request a showing</a>
+                    <a href="#" class="tre-button-light show-modal tre-modal" data-modalid="modal-4072050">request a showing</a>
             	</div>
         	</div>
         </div>
@@ -103,7 +103,7 @@
             </ul>
         </div>
         <div class="property-action">
-        	<a href="#" class="tre-button-light">Ask a Question</a><a href="#" class="tre-button-light">request a showing</a>
+        	<a href="#" class="tre-button-light show-modal tre-modal" data-modalid="modal-4072008">Ask a Question</a><a href="#" class="tre-button-light show-modal tre-modal" data-modalid="modal-4072050">request a showing</a>
         </div>
     </section>
     <section class="property-map" style="padding-top: 40px;">
@@ -128,3 +128,4 @@
         <?php endif;?>
     </section>
 </div>
+<?php echo do_shortcode( '[tremaine_modal id="4072008"][tremaine_modal id="4072050"]' );?>
