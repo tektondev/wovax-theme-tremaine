@@ -1,0 +1,95 @@
+.wx-post-gallery fieldset {
+    border: none;
+	padding: 0;
+	margin: 0;
+}
+.wx-post-gallery h2 {
+	font-size: 3rem;
+    font-weight: 300;
+    color: #1f3652;
+	line-height: 42px;
+	float: left;
+}
+.wx-post-gallery .wx-gallery-controls {
+	display: block;
+	margin-left: 100px;
+	text-align: right;
+}
+.wx-post-gallery .wx-gallery-controls .wx-gallery-field {
+	display: inline-block;
+	vertical-align: top;
+	letter-spacing: 1px;
+}
+.wx-post-gallery .wx-gallery-controls > .wx-gallery-field {
+	margin-left: 25px;
+}
+.wx-post-gallery .wx-gallery-controls .wx-gallery-field.wx-sort-field {
+	/*min-width: 300px;*/
+}
+.wx-post-gallery .wx-gallery-controls .wx-gallery-field.wx-sort-field label {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 42px;
+	height: 42px;
+}
+.wx-post-gallery .wx-gallery-controls .wx-gallery-field.wx-sort-field select {
+	display: inline-block;
+	vertical-align: top;
+	width: 200px;
+	height: 42px;
+	padding: 0;
+}
+.wx-post-gallery .wx-gallery-controls .wx-gallery-field.wx-desc-field {
+	line-height: 42px;
+	height: 42px;
+}
+.wx-post-gallery .wx-gallery-controls .wx-gallery-field.wx-arrow-button input {
+	width: 50px;
+	background-image:url(../images/arrow-right-blue.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 42px;
+	font-size: 0;
+}
+.wx-post-gallery .wx-gallery-controls .wx-gallery-field.wx-page-numbers input {
+	height: 42px;
+	line-height: 42px;
+	border: none;
+	color: #333;
+	padding: 0 1px;
+}
+.wx-post-gallery .wx-gallery-controls .wx-gallery-field.wx-page-numbers input.wx-active {
+	font-weight: bold;
+}
+.wx-post-gallery .wx-gallery-controls .wx-gallery-field.wx-page-numbers input:hover {
+	background-color:transparent;
+}
+.wx-post-gallery .wx-gallery-controls .wx-gallery-field.wx-page-numbers div {
+	display: inline-block;
+	height: 42px;
+	line-height: 42px;
+	color: #333;
+	padding: 0;
+}
+@media screen and (max-width: 1050px) {
+    .wx-post-gallery .wx-gallery-controls {
+		margin-left: 0;
+		text-align: left;
+	}
+	.wx-post-gallery h2 {
+		float: none;
+	}
+	.wx-post-gallery .wx-gallery-controls > .wx-gallery-field {
+		margin-left: 0;
+		margin-right: 25px;
+	}
+}
+@media screen and (max-width: 900px) {
+	.wx-post-gallery .wx-gallery-controls > .wx-gallery-field {
+		margin-top: 16px;
+	}
+    .wx-post-gallery .wx-gallery-controls .wx-gallery-field.wx-sort-field {
+		display: block;
+		margin-top: 0;
+	}
+}

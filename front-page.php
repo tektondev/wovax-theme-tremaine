@@ -25,7 +25,13 @@ class Tremaine_Front_Page_Template {
 		$video_mp4 = get_theme_mod( 'tremaine_frontpage_video_mp4' , false );
 		//$video_ogg = $this->get_option( 'wovax_frontpage_bg_video_ogg' ); 
 		
+		ob_start();
+		
 		include locate_template( 'inc/inc-frontpage-feature.php' ) ;
+		
+		$html = ob_get_clean();
+		
+		echo apply_filters( 'do_modal_windows', $html );
 		
 	} // end 
 	

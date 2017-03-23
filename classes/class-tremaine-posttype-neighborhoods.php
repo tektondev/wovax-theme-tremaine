@@ -7,6 +7,7 @@ class Tremaine_Posttype_Neighborhoods extends Tremaine_Posttype {
 	protected $settings = array(
 		'_property_filter_field_name'	 	=> array('default' => '', 'type' => 'text' ),
 		'_property_filter_field_value' 		=> array('default' => '', 'type' => 'text' ),
+		'_property_filter_field_logic' 		=> array('default' => 'OR', 'type' => 'text' ),
 		'_property_filter_compare' 			=> array('default' => '', 'type' => 'text' ),
 		'_property_filter_case_sensitive' 	=> array('default' => '', 'type' => 'text' ),
 		'_html_code' 						=> array('default' => '', 'type' => 'raw' ),
@@ -36,7 +37,7 @@ class Tremaine_Posttype_Neighborhoods extends Tremaine_Posttype {
 		if ( ! empty( $settings['_property_filter_field_name'] ) ) $ls .= 'custom_field="' . $settings['_property_filter_field_name'] . '" ';
 		if ( ! empty( $settings['_property_filter_field_value'] ) ) $ls .= 'custom_field_value="' . $settings['_property_filter_field_value'] . '" ';
 		if ( ! empty( $settings['_property_filter_compare'] ) ) $ls .= 'compare="' . $settings['_property_filter_compare'] . '" ';
-		$ls .= ']';
+		$ls .= ' posts_per_page="6"]';
 		
 		echo do_shortcode( $ls );
 		

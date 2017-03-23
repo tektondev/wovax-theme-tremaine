@@ -188,6 +188,22 @@ var tremaine = {
 		
 		events:function(){
 			
+			jQuery('#import-content').load( function(){ 
+			
+				jQuery('#import-content').contents().on(
+					'click',
+					'.show-modal',
+					function( e ){
+						e.preventDefault();
+						e.stopPropagation();
+						tremaine.modal.show( jQuery( this ) , e );
+						return false;
+					}
+				);
+			
+			
+			} );
+			
 			jQuery('body').on(
 				'click',
 				'.show-modal',
@@ -195,6 +211,8 @@ var tremaine = {
 					tremaine.modal.show( jQuery( this ) , e );
 				}
 			);
+			
+			
 			
 			jQuery('body').on(
 				'click',
@@ -209,9 +227,13 @@ var tremaine = {
 		
 		hide: function(){
 			
-			tremaine.modal.frame.fadeOut('fast' , function(){
-				tremaine.modal.frame.find( '.tre-modal-window-content' ).html( '' );
-			});
+			jQuery('.tre-modal-frame').css('top', '-9999rem');
+			
+			jQuery('.tre-modal-frame.video-frame').removeClass('video-frame').find( '.tre-modal-window-content' ).html('');
+			
+			//tremaine.modal.frame.fadeOut('fast' , function(){
+				//tremaine.modal.frame.find( '.tre-modal-window-content' ).html( '' );
+			//});
 			
 			tremaine.modal.bg.fadeOut('fast');
 			
@@ -219,25 +241,90 @@ var tremaine = {
 		
 		show:function( item_clicked , ev ){
 			
-			var modal_id = item_clicked.data('modalid');
+			var type = item_clicked.data('modaltype');
 			
-			var modal_content_wrap = tremaine.modal.get_modal_content_wrapper( modal_id );
-			
-			if ( modal_content_wrap ){
-				
-				var modal_content = modal_content_wrap.html();
-			
-				var modal_width = item_clicked.data('modalwidth');
+			if ( typeof type !== typeof undefined && type !== false ){
 				
 				ev.preventDefault();
 				
+				var type = item_clicked.data('modaltype');
+				
+				switch ( type ){
+					
+					case 'youtube':
+						tremaine.modal.show_youtube( item_clicked, ev );
+						break;
+					
+				} // end switch
+				
 				tremaine.modal.show_bg();
 				
-				tremaine.modal.show_frame( modal_content, modal_width );
+			} else {
+			
+				var modal_id = item_clicked.data('modalid');
 				
+				var modal_content_wrap = tremaine.modal.get_modal_content_wrapper( modal_id );
+				
+				if ( modal_content_wrap ){
+					
+					//var modal_content = modal_content_wrap.html();
+				
+					var modal_width = item_clicked.data('modalwidth');
+					
+					ev.preventDefault();
+					
+					tremaine.modal.show_bg();
+					
+					tremaine.modal.show_frame( modal_content_wrap, modal_width );
+					
+				} // end if
+			
 			} // end if
 			
 		},
+		
+		show_youtube:function( item_clicked, ev ){
+			
+			if ( ! tremaine.modal.frame ){
+				
+				tremaine.modal.add_frame();
+				
+			} // end if
+			
+			var src = item_clicked.attr('href');
+			
+			var vid_id = tremaine.modal.get_vid_id( src );
+			
+			var html = '<iframe src="https://www.youtube.com/embed/' + vid_id + '?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>';
+			
+
+			var modal = tremaine.modal.frame.find( '.tre-modal-window-content' );
+			
+			tremaine.modal.frame.addClass('video-frame');			
+			
+			modal.html( html );
+			
+			tremaine.modal.show_frame( modal, 850 );
+			
+		}, // end show_youtube
+		
+		get_vid_id:function( href ){
+			
+			var vid_id = false;
+			
+			var base = href.split('v=');
+			
+			if ( base.length > 1 ){
+				
+				base_id = base[1].split('?');
+				
+				vid_id = base_id[0];
+				
+			} // end if
+			
+			return vid_id;
+			
+		}, // end get_vid_id
 		
 		get_modal_content:function( modal_id ){
 			
@@ -283,45 +370,51 @@ var tremaine = {
 			
 		},
 		
-		show_frame:function( content, width ){
+		show_frame:function( modal_content_wrap, width ){
 			
-			if ( ! tremaine.modal.frame ){
+			//if ( ! tremaine.modal.frame ){
 				
-				tremaine.modal.add_frame();
+				//tremaine.modal.add_frame();
 				
-			} // end if
+			//} // end if
 			
-			tremaine.modal.frame.find( '.tre-modal-window-content' ).html( content );
+			//tremaine.modal.frame.find( '.tre-modal-window-content' ).html( content );
 			
-			tremaine.modal.set_height();
+			console.log( modal_content_wrap );
+			
+			var frame = modal_content_wrap.closest('.tre-modal-window');
+			
+			console.log( frame );
+			
+			tremaine.modal.set_height( frame.parent() );
 			
 			if ( width ){
 				
-				tremaine.modal.frame.find('.tre-modal-window').css('max-width', width + 'px' );
+				frame.css('max-width', width + 'px' );
 				
 			} else {
 				
-				tremaine.modal.frame.find('.tre-modal-window').css('max-width', '850px' );
+				frame.css('max-width', '850px' );
 				
 			}// end if
 			
-			tremaine.modal.frame.fadeIn('fast');
+			//frame.parent().fadeIn('fast');
 			
 		},
 		
 		add_frame:function(){
 			
-			var frame = '<div id="tre-modal-frame"><div class="tre-modal-window"><a href="#" class="tre-close-modal"><i class="fa fa-times" aria-hidden="true"></i></a><div class="tre-modal-window-content"></div></div></div>';
+			var frame = '<div class="tre-modal-frame dynamic-modal" style="top: -9999rem;"><div class="tre-modal-window"><a href="#" class="tre-close-modal"><i class="fa fa-times" aria-hidden="true"></i></a><div class="tre-modal-window-content"></div></div></div>';
 			
 			jQuery( 'body' ).append( frame );
 			
-			tremaine.modal.frame = jQuery( '#tre-modal-frame');
+			tremaine.modal.frame = jQuery( '.tre-modal-frame.dynamic-modal');
 			
 		},
 		
-		set_height:function(){
+		set_height:function( frame ){
 			
-			tremaine.modal.frame.css( 'top' , ( jQuery(window).scrollTop() + 100 ) );
+			frame.css( 'top' , ( jQuery(window).scrollTop() + 100 ) );
 			
 		}
 		

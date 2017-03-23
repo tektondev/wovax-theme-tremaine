@@ -9,7 +9,48 @@ class Tremaine_Post_Type_Modal {
 		
 		add_shortcode( 'tremaine_modal' , array( $this , 'render_shortcode' ) );
 		
+		add_action( 'wp_footer', array( $this, 'the_modals' ), 100 );
+		
+		add_filter( 'the_content', array( $this, 'the_content_modals' ), 999 );
+		
+		add_filter( 'do_shortcode_tag', array( $this, 'the_content_modals' ), 999 );
+		
+		add_filter( 'do_modal_windows', array( $this, 'the_content_modals' ), 999 );
+		
+		global $tremaine_modals;
+		
+		$tremaine_modals = array();
+		
 	} // end init
+	
+	
+	public function the_content_modals( $content ){
+			
+		$matches = array();
+	
+		preg_match_all( '/data-modalid="(.*?)"/', $content, $matches, PREG_PATTERN_ORDER );
+		
+		if ( ! empty( $matches[1] ) ){
+			
+			$modals = $matches[1];
+			
+			foreach( $modals as $modal ){
+				
+				$id = explode( '-', $modal );
+				
+				if ( ! empty( $id[1] ) ){
+					
+					$this->render_shortcode( array( 'id' => $id[1] ), '', 'content_modal' );
+					
+				} // end if
+				
+			} // end foreach
+			
+		} // end if
+		
+		return $content;
+		
+	} // end the_content_modals
 	
 	
 	public function register(){
@@ -31,6 +72,12 @@ class Tremaine_Post_Type_Modal {
 		
 		$modal_html = '';
 		
+		global $tremaine_modals;
+		
+		if ( ! isset( $tremaine_modals ) ) $tremaine_modals = array();
+		
+		$modal_html = '';
+		
 		$default_atts = array(
 			'id' 		=> '',
 			'display' 	=> 'image-left',
@@ -41,12 +88,11 @@ class Tremaine_Post_Type_Modal {
 		
 		$atts = shortcode_atts( $default_atts, $atts, $tag );
 		
-		error_reporting(E_ALL);
-ini_set('display_errors','1');
-		
 		if ( ! empty( $atts['id'] ) ){
 			
 			$post = get_post( $atts['id'] ) ;
+			
+			if ( $post ){
 			
 			$modal_id = 'modal-' . $post->ID;
 			
@@ -91,7 +137,17 @@ ini_set('display_errors','1');
 				
 			} // end switch
 			
-			$modal_html .= ob_get_clean();
+			$modal_display_html = ob_get_clean();
+			
+			if ( ! array_key_exists( 'modal-' . $atts['id'] , $tremaine_modals ) ){
+			
+				$tremaine_modals['modal-' . $atts['id'] ] = $modal_display_html;
+			
+			} // end if
+			
+			//$modal_html .= $modal_display_html;
+			
+			} // end if
 			
 		} // end if
 		
@@ -99,6 +155,24 @@ ini_set('display_errors','1');
 		
 	} // end render_shortcode
 	
+	
+	public function the_modals(){
+		
+		global $tremaine_modals;
+		
+		if ( isset( $tremaine_modals ) && is_array( $tremaine_modals ) ){
+			
+			foreach( $tremaine_modals as $modal ){
+				
+				$html = '<div class="tre-modal-frame" style="top: -9999rem;"><div class="tre-modal-window"><a href="#" class="tre-close-modal"><i class="fa fa-times" aria-hidden="true"></i></a><div class="tre-modal-window-content">' . $modal . '</div></div></div>';
+   
+				echo $html;
+				
+			} // end foreach
+			
+		} // end if
+		
+	} // end the_modals
 	
 	
 } 

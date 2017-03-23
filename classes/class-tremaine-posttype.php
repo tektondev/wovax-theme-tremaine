@@ -23,6 +23,8 @@ abstract class Tremaine_Posttype {
 		
 		if ( ! empty( $this->settings ) ) add_action( 'save_post_' . $this->post_type ,  array( $this , 'action_save' ), 9, 3 );
 		
+		if ( method_exists( $this , 'register_shortcodes' ) ) { $this->register_shortcodes(); }
+		
 	} // end init
 	
 	
@@ -130,7 +132,7 @@ abstract class Tremaine_Posttype {
 	}
 	
 	
-	protected function get_settings( $post_id ){
+	public function get_settings( $post_id ){
 		
 		$settings = array();
 		
@@ -165,18 +167,18 @@ abstract class Tremaine_Posttype {
 		
 		foreach( $this->settings as $key => $values ){
 			
-			if ( empty( $_POST[ $key ] ) ) {
-				
-				$settings[ $key ] = $values['default'];
-				
-			} else if ( $values['type']  == 'raw' ){
-				
-				$settings[ $key ] = $_POST[ $key ];
-				
-			} else {
-				
-				$settings[ $key ] = sanitize_text_field( $_POST[ $key ] );
-				
+			if ( isset( $_POST[ $key ] ) ){
+			
+				if ( $values['type']  == 'raw' ){
+					
+					$settings[ $key ] = $_POST[ $key ];
+					
+				} else {
+					
+					$settings[ $key ] = sanitize_text_field( $_POST[ $key ] );
+					
+				} // end if
+			
 			} // end if
 			
 		} // end foreach

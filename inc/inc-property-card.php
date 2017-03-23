@@ -15,8 +15,6 @@
         </ul> 
     </li>
 </ul>
-<div id="tre-property-<?php echo $property->get_id();?>" class="tre-modal-content">
-	<?php echo $property->get_modal(); ?> 
-</div>
+<?php $tremaine_modals['modal-' . $property->get_id() ] = '<div id="tre-property-' . $property->get_id() . '" class="tre-modal-content">' . $property->get_modal() . '</div>';?>
 <a href="#" class="tre-full-link tre-modal show-modal" data-modalid="tre-property-<?php echo $property->get_id();?>"></a>
 </li>

@@ -31,23 +31,16 @@ class Tremaine_Share_Modal {
 	
 	public function the_modal(){
 			
-			if ( function_exists( 'sharing_display' ) ) {
+			if ( is_active_sidebar( 'social_modal' ) ) {
 				
 				echo '<div id="tremaine-share-modal-bg" class="close-share-modal" style="display:none"></div><div id="tremaine-share-modal" style="top: -9999rem"><a href="#" class="close-share-modal"><i class="fa fa-times" aria-hidden="true"></i></a>';
 				
-				sharing_display( '', true );
+					dynamic_sidebar( 'social_modal' );
 				
 				echo '</div>';
 				
-			}
-			
-			if ( class_exists( 'Jetpack_Likes' ) ) {
-				
-				
-				
-					$custom_likes = new Jetpack_Likes;
-					echo $custom_likes->post_likes( '' );
-			}
+			} // end if
+		
 		
 	} // end the_modal
 	
@@ -56,7 +49,7 @@ class Tremaine_Share_Modal {
 		
 		 register_sidebar( array(
 			'name' => 'Social Modal',
-			'id' => 'social-modal',
+			'id' => 'social_modal',
 			'description' => 'Social icons modal for share action',
 			'before_widget' => '<li id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</li>',

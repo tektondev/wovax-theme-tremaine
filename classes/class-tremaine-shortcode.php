@@ -7,6 +7,13 @@ abstract class Tremaine_Shortcode {
 	protected $default_atts = array();
 	
 	
+	public function init(){
+		
+		$this->register();
+		
+	} // end init
+	
+	
 	public function register(){
 		
 		if ( method_exists( $this , 'render_shortcode' ) ){
@@ -22,7 +29,7 @@ abstract class Tremaine_Shortcode {
 		
 		$new_atts = shortcode_atts( $this->default_atts , $atts );
 		
-		$shortcode = $this->render_shortcode( $new_atts , $content, $tag, $atts_orig );
+		$shortcode = $this->render_shortcode( $new_atts , $content, $tag, $atts  );
 		
 		return $shortcode;
 		

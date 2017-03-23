@@ -19,6 +19,8 @@ class Tremaine_Profile_Template extends Tremaine_Template {
 			
 		add_action( 'genesis_after_header' , array( $this , 'the_profile' ), 999 );
 		
+		add_action( 'genesis_after_header' , array( $this , 'the_profile_footer' ), 1000 );
+		
 	} // end edit_template
 	
 	
@@ -55,6 +57,53 @@ class Tremaine_Profile_Template extends Tremaine_Template {
 		include locate_template( 'inc/inc-profile-about.php' ) ;
 		
 		include locate_template( 'inc/inc-profile-tabs.php' ) ;*/
+		
+	}
+	
+	public function the_profile_footer(){
+		
+		$scode_active = get_post_meta( get_the_ID(),  '_shortcode_active_override', true );
+			
+		if ( empty( $scode_active ) ){
+			
+			$scode_active = get_theme_mod('crest_profile_shortcode_1', '');
+			
+		} // end if
+		
+		$scode_closed = get_post_meta( get_the_ID(),  '_shortcode_closed_override', true );
+		
+		if ( empty( $scode_closed ) ){
+			
+			$scode_closed = get_theme_mod('crest_profile_shortcode_2', '');
+			
+		} // end if
+		
+		$shortcode_1 = $this->replace_values( $scode_active );
+		$shortcode_2 = $this->replace_values( $scode_closed );
+		
+		include WOVAXTREMAINEPATH . 'parts/people/profile-footer.php';
+		
+	}
+	
+	protected function replace_values( $shortcode ){
+		
+		global $post;
+		
+		$replace = array(
+			'%crest_id%' => get_post_meta( $post->ID, '_crest_id', true ),
+			'%primary_email%' => get_post_meta( $post->ID, '_primary_email', true ),
+			'%rfg_office_staff_id%' => get_post_meta( $post->ID, '_rfg_office_staff_id', true ),
+			'%first_name%' => get_post_meta( $post->ID, '_first_name', true ),
+			'%last_name%' => get_post_meta( $post->ID, '_last_name', true ),
+		);
+		
+		foreach( $replace as $key => $value ){
+			
+			$shortcode = str_replace( $key, $value, $shortcode );
+			
+		} // end foreach
+		
+		return $shortcode;
 		
 	}
 	

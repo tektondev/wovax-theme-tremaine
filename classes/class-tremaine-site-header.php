@@ -22,7 +22,13 @@ class Tremaine_Site_Header {
 		
 			echo '<div class="tre-secondary-nav"><div class="wrap">';
 			
+			//ob_start();
+			
 			dynamic_sidebar( 'tremaine_secondary_nav' );
+			
+			//$html = ob_get_clean();
+			
+			//echo apply_filters( 'do_modal_windows', $html );
 			
 			echo '</div></div>';
 			

@@ -14,8 +14,11 @@ class Tremaine_Posttype_Developments extends Tremaine_Posttype {
 		'_interior_designer' 	=> array('default' => '', 'type' => 'text' ),
 		'_address' 				=> array('default' => '', 'type' => 'text' ),
 		'_more_link'			=> array('default' => '', 'type' => 'text' ),
+		'_more_info_modal'		=> array('default' => '', 'type' => 'text' ),
 		'_bg_image'				=> array('default' => '', 'type' => 'text' ),
 		'_logo'					=> array('default' => '', 'type' => 'text' ),
+		'_modal_id' 			=> array('default' => '', 'type' => 'text' ),
+		'_modal_link_text' 		=> array('default' => '', 'type' => 'text' ),
 	);
 	
 	protected $args = array(
@@ -31,6 +34,7 @@ class Tremaine_Posttype_Developments extends Tremaine_Posttype {
 	
 	protected function edit_form_after_title( $post, $settings ){
 		
+		$modals = $this->get_modals();
 		
 		include WOVAXTREMAINEPATH . 'includes/include-developments-editor-form.php';
 		
@@ -45,8 +49,18 @@ class Tremaine_Posttype_Developments extends Tremaine_Posttype {
 		
 		$areas = get_terms( 'development_areas', array() );
 		
+		$modal_id = ( $settings['_modal_id'] )? $settings['_modal_id'] : '4095263';
+		
+		ob_start();
+		
 		include locate_template( 'inc/inc-single-developments.php' );
 		include locate_template( 'inc/inc-single-developments-content.php' );
+		
+		$html = ob_get_clean();
+		
+		$html = apply_filters( 'do_modal_windows', $html );
+		
+		echo $html;
 		
 	} // end genesis_entry_content
 	
@@ -64,7 +78,7 @@ class Tremaine_Posttype_Developments extends Tremaine_Posttype {
 		);
 	}
 	
-	protected function get_developments_gallery( $term_id ){
+	protected function get_developments_gallery( $term_id = false ){
 		
 		$gallery_html = '';
 		
@@ -144,6 +158,35 @@ class Tremaine_Posttype_Developments extends Tremaine_Posttype {
 		
 		
 	} // end get_developments_gallery
+	
+	
+	protected function get_modals(){
+		
+		$modals = array( 0 => 'Not Set' );
+		
+		$args = array(
+			'post_type' => 'modal',
+			'status'	=> 'publish',
+			'posts_per_page' => -1,
+			'orderby' => 'title',
+			'order' => 'ASC',
+		);
+		
+		$modal_posts = get_posts( $args );
+		
+		if ( is_array( $modal_posts ) ){
+			
+			foreach( $modal_posts as $modal ){
+				
+				$modals[ $modal->ID ] = $modal->post_title;
+				
+			} // end foreach
+			
+		} // end if
+		
+		return $modals;
+		
+	} // end get_modals
 	
 	
 	//public function genesis_entry_content(){

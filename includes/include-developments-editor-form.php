@@ -34,12 +34,28 @@
     	<input type="text" name="_address" value="<?php echo $settings['_address'];?>" />
     </div>
     <div class="wx-field">
-    	<label>More Info Link URL</label>
+    	<label>More Informaiton Link URL</label>
     	<input type="text" name="_more_link" value="<?php echo $settings['_more_link'];?>" />
+    </div>
+    <div class="wx-field">
+    	<label>More Informaiton Link URL (Optional)</label>
+        <select name="_more_info_modal">
+        	<?php foreach( $modals as $m_id => $m_name ):?>
+            	<option value="<?php echo $m_id; ?>" <?php selected( $m_id, $settings['_more_info_modal'] );?> ><?php echo $m_name; ?></option>
+            <?php endforeach;?>
+        </select>
     </div>
     <div class="wx-field">
     	<label>Logo</label>
     	<input type="text" name="_logo" value="<?php echo $settings['_logo'];?>" />
+    </div>
+    <div class="wx-field">
+    	<label>Modal ID</label>
+    	<input type="text" name="_modal_id" value="<?php echo $settings['_modal_id'];?>" />
+    </div>
+    <div class="wx-field">
+    	<label>Modal Link Text</label>
+    	<input type="text" name="_modal_link_text" value="<?php echo $settings['_modal_link_text'];?>" />
     </div>
 </fieldset>
 <hr />

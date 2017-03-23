@@ -632,7 +632,7 @@ th:first-child {
 
 .content {
 	float: right;
-	width: 880px;
+	width: 830px;
 }
 
 .content-sidebar .content,
@@ -1166,7 +1166,7 @@ img.alignright,
 	color: #333;
 	text-decoration: none !important;
 	display: block;
-	padding: 15px 10px 10px;
+	padding: 10px;
 	text-transform: uppercase;
 	box-sizing: border-box;
 	font-weight: 400;
@@ -2243,7 +2243,7 @@ h2.tre-regular {
 
 
 .trerow.trelayout-half .trebg-column.trebg-column-one {right: 50%; }
-.trerow.trelayout-half .trebg-column.trebg-column-two {left: 50%;}
+.trerow.trelayout-half .trebg-column.trebg-column-two {left: 50%;} 
 
 .trerow.trelayout-half .trecolumn { width: 50%; }
 
@@ -2253,6 +2253,7 @@ h2.tre-regular {
  .tre-checklist li {
 	 position: relative;
 	 padding: 0 0 30px 30px;
+	 list-style-type: none !important;
  }
  
  .tre-checklist li:last-child {
@@ -2331,7 +2332,7 @@ h2.tre-regular {
 
 .tre-gallery-hover .tre-gallery-hover-results {
 	margin: 0 -14px;
-	padding-bottom: 115px;
+	padding-bottom: 0;
 }
 
 .tre-gallery-hover-caption h5 {
@@ -2789,7 +2790,7 @@ input[type="submit"].tre-button-light {
 .entry {
     background-color: #fff;
     margin-bottom: 0;
-    padding: 110px 0 0;
+    padding: 0;
 }
 
 

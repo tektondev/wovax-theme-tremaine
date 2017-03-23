@@ -232,7 +232,7 @@ class Tremaine_Property {
 		
 		if ( strpos( $features_str, 'A/C' ) !== false ) $features['Air Conditioning'] = 'air-conditioning';
 		if ( strpos( $features_str, 'Dryer' ) !== false  ) $features['Dryer'] = 'dryer';
-		if ( strpos( $features_str, 'Exercise Room' ) !== false  ) $features['Gym'] = 'gym';
+		if ( strpos( $features_str, 'Exercise Room' ) !== false  ) $features['Exercise Room'] = 'gym';
 		if ( strpos( $features_str, 'Storage' ) !== false  ) $features['Storage'] = 'storage';
 		if ( strpos( $features_str, 'Balcony' ) !== false  ) $features['Balcony'] = 'balcony';
 		if ( strpos( $features_str, 'Fireplace' ) !== false  ) $features['Fireplace'] = 'fireplace';

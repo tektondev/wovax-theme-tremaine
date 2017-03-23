@@ -122,7 +122,7 @@
 }
 
 .tre-profile-contact-details .tre-profile-logo,
-#tre-modal-frame .tre-modal-window,
+.tre-modal-frame .tre-modal-window,
 .tre-slideshow-nav ul li,
 .tre-row .tre-column,
 .tre-gallery .tre-gallery-card-info,
@@ -374,14 +374,14 @@
 }
 
 
-#tre-modal-frame {
+.tre-modal-frame {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 }
 
-#tre-modal-frame .tre-modal-window {
+.tre-modal-frame .tre-modal-window {
 	background-color: #fff;
 	max-width: 850px;
 	margin: 0 auto;
@@ -390,7 +390,7 @@
 	z-index: 1001;
 }
 
-#tre-modal-frame .tre-modal-window a.tre-close-modal {
+.tre-modal-frame .tre-modal-window a.tre-close-modal {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -1044,11 +1044,11 @@
 		display: block;
 	}
 	
-	#tre-modal-frame .tre-modal-window a.tre-close-modal {
+	.tre-modal-frame .tre-modal-window a.tre-close-modal {
 		z-index: 10000;
 	}
 	
-	#tre-modal-frame .tre-modal-window {
+	.tre-modal-frame .tre-modal-window {
 		margin: 0 20px;
 	}
 	

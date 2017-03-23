@@ -39,6 +39,8 @@ class Shortcode_Tremaine_Listing extends Tremaine_Shortcode {
 		
 		$sort_options = get_option('wovax_sort_fields');
 		
+		global $tremaine_modals;
+		
 		ob_start();
 		
 		include 'includes/include-tremaine-listings-gallery.php';
@@ -95,12 +97,20 @@ class Shortcode_Tremaine_Listing extends Tremaine_Shortcode {
 		if ( ! empty( $presets['custom_field'] ) ){
 			
 			$args['meta_query'] = array(
-				array(
-					'key'     => $presets['custom_field'],
-					'value'   => $presets['custom_field_value'],
-					'compare' => 'LIKE',
-				),
+				'relation' => 'OR',
 			);
+			
+			$field_values = explode( ',' , $presets['custom_field_value'] );
+			
+			foreach( $field_values as $f_value ){
+				
+				$args['meta_query'][] = array(
+					'key'     => $presets['custom_field'],
+					'value'   => $f_value,
+					'compare' => 'LIKE',
+				);
+				
+			} // end foreach
 			
 		} // end if
 		

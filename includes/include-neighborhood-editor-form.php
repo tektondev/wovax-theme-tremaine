@@ -10,6 +10,13 @@
     	<input type="text" name="_property_filter_field_value" value="<?php echo $settings['_property_filter_field_value'];?>" />
     </div>
     <div class="wx-field">
+    	<label>Filter Logic (If Comma Seperated List for Field Values):</label>
+        <select name="_property_filter_field_logic">
+        	<option value="OR" <?php selected( 'OR', $settings['_property_filter_field_logic']);?>>OR</option>
+            <option value="And" <?php selected( 'And', $settings['_property_filter_field_logic']);?>>And</option>
+        </select>
+    </div>
+    <div class="wx-field">
     	<label>Use Compare Logic:</label>
         <select name="_property_filter_compare">
         	<option value="ex-match" <?php selected( 'ex-match', $settings['_property_filter_compare']);?>>Exact Match</option>

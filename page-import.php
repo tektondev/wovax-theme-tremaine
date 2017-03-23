@@ -23,6 +23,12 @@ class Tremaine_Import_Page_Template {
 	
 	public function add_code_section(){
 		
+		global $post;
+		
+		$code = get_post_meta( $post->ID, '_frame_code', true );
+		
+		$modals = apply_filters( 'do_modal_windows', htmlspecialchars_decode( $code ) );
+		
 		echo '<iframe id="import-content" src="?tkd-frame=true" frameborder="0" style="width: 100%; height: 9000px; overflow:hidden;"  scrolling="no"></iframe>';
 		echo "<script>jQuery( document ).ready( function(){
 			  set_frm_height();

@@ -25,7 +25,7 @@
                         <?php for( $i = $start_set; $i < ( $end_set ); $i++ ):?>
                         <input type="submit" name="cpage" value="<?php echo $i;?>" <?php if( $i == $page ) { echo 'class="wx-active"'; } ?> />
                         <?php endfor;?>
-                        <div>.....</div>
+                        <div>&nbsp;.....</div>
                         <input type="submit" name="cpage" value="<?php echo $total_pages;?>" />
                     </div>
                     <div class="wx-gallery-field wx-arrow-button">

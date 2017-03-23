@@ -6,7 +6,11 @@
                 <div class="trecolumn-inner">
                    
             	</div>
-                <?php if( $settings['_more_link'] ):?><a href="<?php echo $settings['_more_link'];?>" class="more-link">More Information <i class="fa fa-caret-right" aria-hidden="true"></i></a><?php endif;?>
+                <?php if( $settings['_more_info_modal'] ):?>
+                	<a href="#" class="more-link show-modal" data-modalid="modal-<?php echo $settings['_more_info_modal'];?>">More Information <i class="fa fa-caret-right" aria-hidden="true"></i></a>
+                <?php elseif( $settings['_more_link'] ):?>
+                	<a href="<?php echo $settings['_more_link'];?>" class="more-link">More Information <i class="fa fa-caret-right" aria-hidden="true"></i></a>
+				<?php endif;?>
             </div>
             <div class="trecolumn trecolumn-two">
              <h1><?php echo get_the_title( $post->ID );?></h1>
@@ -38,7 +42,7 @@
                 </div><?php endif;?>
             </div>
             <?php if( $settings['_address'] ):?><p class="tre-icon-before-wide"><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $settings['_address'];?></p><?php endif;?>
-            <p><a href="#" class="tre-button-light">schedule your free consultation</a></p>
+            <p><a href="#" class="tre-button-light tre-modal show-modal" data-modalid="modal-<?php echo $modal_id;?>"><?php if ( $settings['_modal_link_text'] ) { echo $settings['_modal_link_text']; } else { echo 'schedule your free consultation'; }?></a><?php echo do_shortcode('[tremaine_modal id="' . $modal_id . '"]');?></p>
         </div>
         
     </div>
