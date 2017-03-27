@@ -493,15 +493,15 @@ ul.tremaine-office-gallery {
 .person-profile .person-profile-details a:hover {
 	color: #fff;
 }
-#tre-profile-video-banner .wrap {
+#tre-profile-video-banner .wide-wrap {
 	position: relative;
 }
-#tre-profile-video-banner .wrap > img {
+#tre-profile-video-banner .wide-wrap > img {
 	width: 100%;
 	height: auto;
 	display: block;
 }
-#tre-profile-video-banner .wrap iframe {
+#tre-profile-video-banner .wide-wrap iframe {
 	position: absolute;
 	height: 100%;
 	width: 100%;
