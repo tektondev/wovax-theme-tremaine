@@ -13,7 +13,7 @@ class Tremaine_Forms {
 		$start_set = ( $page == 1 ) ? 1 : ( $page - 1 );
 		$end_set = ( ( $start_set + 4 ) > $total_pages ) ? $total_pages : $start_set + 4;
 		$showing_start = ( $page == 1 ) ? 1 : ( $page - 1 ) * $per_page;
-		$showing_end = ( $total_results < $per_page ) ? $total_results : $showing_start + ( $per_page - 1 ) ;
+		$showing_end = ( $total_results < $per_page ) ? $total_results : $showing_start + $per_page ;
 		
 		ob_start();
 		

@@ -109,8 +109,17 @@ a.wx-header-menu-left-heart:before,
 	font-size: 1.3rem;
 	margin-right: 4px;
 }
-
-
+.make-lower-case h1,
+.make-lower-case h2,
+.make-lower-case h3,
+.make-lower-case h4,
+.make-lower-case h5,
+.make-lower-case {
+	text-transform: none;
+}
+.bottom-line {
+	border-bottom: 1px solid #ccc;
+}
 /* Developments
 ----------------------------------------------------------------------- */
 .single-developments .primary-page-banner a.more-link {
@@ -152,6 +161,10 @@ body.page .content-sidebar-wrap {
 	margin-bottom: 24px;
 }
 
+.wovax-form-controls input {
+	background-color: transparent;
+}
+
 .wovax-form-controls.footer-controls {
 	padding: 12px 0 0 0;
 	border-bottom: none;
@@ -181,6 +194,9 @@ body.page .content-sidebar-wrap {
 	background-repeat: no-repeat;
 	height: 42px;
 	font-size: 0;
+	border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #fff;
 }
 .wx-pagination-field.wx-arrow-button input:hover {
 	background-color: #42a5f5;

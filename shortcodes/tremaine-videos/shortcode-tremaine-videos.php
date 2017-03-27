@@ -5,9 +5,10 @@ class Shortcode_Tremaine_Video extends Tremaine_Shortcode {
 	protected $tag = 'tremaine_videos';
 	
 	protected $default_atts = array(
-		'is-archive' 	=> '',
-		'cpage' 		=> '',
-		'archive-url'   => '',
+		'is-archive' 		=> '',
+		'cpage' 			=> '',
+		'archive-url'   	=> '',
+		'posts_per_page' 	=> '',
 		);
 	
 	
@@ -25,9 +26,19 @@ class Shortcode_Tremaine_Video extends Tremaine_Shortcode {
 		
 		$args = array(
 			'post_type' 		=> 'video',
-			'posts_per_page' 	=> 3,
+			'posts_per_page' 	=> 9,
 			'status' 			=> 'publish', 
 		);
+		
+		foreach( $args as $arkey => $arvalue ){
+			
+			if ( ! empty( $atts[ $arkey ] ) ){
+				
+				$args[ $arkey ] = $atts[ $arkey ];
+				
+			} // end if
+			
+		} // end foreach
 		
 		$args['paged'] = ( ! empty( $atts['cpage'] ) )? $atts['cpage'] : 1; 
 		
@@ -35,7 +46,7 @@ class Shortcode_Tremaine_Video extends Tremaine_Shortcode {
 		
 		$videos = $this->get_videos( $the_query );
 		
-		$pagination = $forms->get_pagination( $the_query, 1, $args[ 'posts_per_page' ] );
+		$pagination = $forms->get_pagination( $the_query, $args['paged'], $args[ 'posts_per_page' ] );
 		
 		$video_cards = $this->get_video_cards( $videos );
 		
