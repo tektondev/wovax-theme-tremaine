@@ -899,6 +899,7 @@ ul.tremaine-office-gallery {
 .tremaine-people-gallery .tremaine-people-card {
 	background-color: #fff;
 	margin-bottom: 24px;
+	position: relative;
 }
 .tremaine-people-gallery .tremaine-people-card:after {
 	content: '';
@@ -965,9 +966,14 @@ ul.tremaine-office-gallery {
 	padding: 0;
 }
 
-.tremaine-video-gallery ul {
+.tremaine-video-gallery > ul {
 	list-style-type: none;
 	margin: 0 -12px;
+}
+
+.tremaine-video-gallery-wrapper ul {
+	list-style-type: none;
+	margin: 0;
 }
 
 .tremaine-video-card-wrapper {
@@ -1017,6 +1023,14 @@ ul.tremaine-office-gallery {
     font-size: 1.25rem;
     letter-spacing: 1px;
 	text-decoration: none;
+}
+.tremaine-video-gallery .tremaine-video-card .video-cover-link {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: block;
 }
 /* Sidebars
 ----------------------------------------------------------------------- */

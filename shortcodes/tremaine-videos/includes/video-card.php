@@ -11,4 +11,5 @@
            <li class="learn-more"><a href="<?php echo $video['link'];?>" class="show-modal" data-modaltype="youtube">Watch Now <i class="fa fa-caret-right" aria-hidden="true"></i></a></li>
         </ul>
     </div>
+    <a href="<?php echo $video['link'];?>" class="show-modal video-cover-link" data-modaltype="youtube"></a>
 </div>
