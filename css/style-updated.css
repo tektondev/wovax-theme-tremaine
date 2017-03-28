@@ -987,6 +987,7 @@ ul.tremaine-office-gallery {
 }
 .tremaine-video-card {
 	background-color: #f8f8f8;
+	position: relative;
 }
 
 .tremaine-video-card .image-wrapper.bg-image-wrapper {

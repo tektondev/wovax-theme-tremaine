@@ -86,7 +86,7 @@ class Shortcode_Tremaine_Video extends Tremaine_Shortcode {
 				$video = array(
 					'title' 		=> get_the_title(),
 					'content' 		=> get_the_content(),
-					'link' 			=> get_post_meta( get_the_ID(),  '_video_url', true ),
+					'link' 			=> get_post_meta( $the_query->post->ID,  '_video_url', true ),
 					'img' 			=> $img_url,
 					
 				);
