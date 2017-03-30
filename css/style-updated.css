@@ -51,6 +51,16 @@ Media Queries
 .blog-template main article {
 	padding-bottom: 60px;
 }
+h1.blog-heading {
+    text-align: center;
+    color: #1f3652;
+    font-weight: 400;
+    font-size: 4rem;
+    padding-bottom: 40px;
+}
+body.archive main article {
+	padding-bottom: 60px;
+}
 /* Buttons
 ----------------------------------------------------------------------- */
 .tremaine-button-dark {
@@ -148,6 +158,13 @@ a.wx-header-menu-left-heart:before,
 
 body.page .content-sidebar-wrap {
 	padding-top: 0;
+}
+
+/* Post Type: Post
+----------------------------------------------------------------------- */
+.archive .site-inner,
+.single-post .site-inner{
+	padding-bottom: 60px;
 }
 
 /* Forms
@@ -624,11 +641,7 @@ ul.tremaine-office-gallery {
 }
 /* Post Type: Office
 ----------------------------------------------------------------------- */
-/* Post Type: Post
------------------------------------------------------------------------ */
-.single-post .site-inner{
-	padding-bottom: 60px;
-}
+
 
 /* Property Listings Gallery
 ----------------------------------------------------------------------- */

@@ -50,7 +50,7 @@ class Shortcode_Tremaine_Video extends Tremaine_Shortcode {
 		
 		$video_cards = $this->get_video_cards( $videos );
 		
-		if ( ! empty( $video_cards ) && count( $video_cards ) < 2  ){
+		/*if ( ! empty( $video_cards ) && count( $video_cards ) < 2  ){
 			
 			for( $i = 0; $i < 8; $i++ ){
 				
@@ -58,7 +58,7 @@ class Shortcode_Tremaine_Video extends Tremaine_Shortcode {
 				
 			} // end for
 			
-		} // end if
+		} // end if*/
 		
 		ob_start();
 		

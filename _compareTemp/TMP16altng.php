@@ -34,30 +34,7 @@ class Tremaine_Setup {
 		
 		add_action( 'genesis_before_footer' , array( $this , 'add_before_footer' ), 1 );
 		
-		add_filter( 'get_the_archive_title', array( $this, 'filter_get_the_archive_title') );
-		
 	} // end __construct
-	
-	
-	public function filter_get_the_archive_title( $title ){
-		
-		 if ( is_category() ) {
-
-            $title = single_cat_title( '', false );
-
-        } else if ( is_tag() ) {
-
-            $title = single_tag_title( '', false );
-
-        } else if ( is_author() ) {
-
-            $title = get_the_author();
-
-        } // end if
-
-    	return $title;
-		
-	} // end filter_get_the_archive_title
 	
 	
 	public function add_before_footer(){
@@ -67,13 +44,7 @@ class Tremaine_Setup {
 		
 				echo '<section class="tre-page-after"><div class="wrap">';
 				
-				ob_start();
-				
-					dynamic_sidebar( 'tremaine_page_after' ); 
-				
-				$html = ob_get_clean();
-				
-				echo apply_filters( 'do_modal_windows', $html );
+				dynamic_sidebar( 'tremaine_page_after' ); 
 				
 				echo '</div></section>';
 				
@@ -83,13 +54,7 @@ class Tremaine_Setup {
 			
 				echo '<nav class="tre-page-after-nav"><div class="wrap">';
 				
-				ob_start();
-				
-					dynamic_sidebar( 'tremaine_page_footer_before' );
-				
-				$html = ob_get_clean();
-				
-				echo apply_filters( 'do_modal_windows', $html );
+				dynamic_sidebar( 'tremaine_page_footer_before' );
 				
 				echo '</div></nav>';
 				
@@ -240,7 +205,7 @@ class Tremaine_Setup {
 			wp_dequeue_style('agents_shortcode');
 			
 			wp_enqueue_style( 'new-child-theme' , get_stylesheet_directory_uri() . '/css/style.css' , array(), Tremaine::$version );
-			wp_enqueue_style( 'new-child-theme-updated' , get_stylesheet_directory_uri() . '/css/style-updated.css' , array(), Tremaine::$version ); 
+			wp_enqueue_style( 'new-child-theme-updated' , get_stylesheet_directory_uri() . '/css/style-updated.css' , array(), Tremaine::$version );
 			
 		} // end if
 		

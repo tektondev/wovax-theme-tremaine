@@ -11,10 +11,6 @@ class Tremaine_Index_Template extends Tremaine_Template {
 			
 			echo '<h1>Luxury Lifestyle Blog</h1>';
 			
-		} else if ( is_archive() ){
-			
-			echo '<h1 class="blog-heading">' . get_the_archive_title() . '</h1>';
-			
 		} // end if
 		
 	} // end genesis_after_header

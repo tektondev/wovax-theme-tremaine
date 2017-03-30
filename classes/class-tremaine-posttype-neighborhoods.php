@@ -11,6 +11,8 @@ class Tremaine_Posttype_Neighborhoods extends Tremaine_Posttype {
 		'_property_filter_compare' 			=> array('default' => '', 'type' => 'text' ),
 		'_property_filter_case_sensitive' 	=> array('default' => '', 'type' => 'text' ),
 		'_html_code' 						=> array('default' => '', 'type' => 'raw' ),
+		'_longitude' 						=> array('default' => '', 'type' => 'text' ),
+		'_latitude' 						=> array('default' => '', 'type' => 'text' ),
 	);
 	
 	protected $args = array(

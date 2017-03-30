@@ -29,5 +29,13 @@
     	<label>Raw HTML/JS/CSS (For Map)</label>
         <textarea name="_html_code" style="width: 100%;height: 150px;"><?php echo $settings['_html_code'];?></textarea>
     </div>
+    <div class="wx-field">
+    	<label>Latitude</label>
+    	<input type="text" name="_latitude" value="<?php echo $settings['_latitude'];?>" />
+    </div>
+    <div class="wx-field">
+    	<label>Longitude</label>
+    	<input type="text" name="_longitude" value="<?php echo $settings['_longitude'];?>" />
+    </div>
 </fieldset>
 <hr />
