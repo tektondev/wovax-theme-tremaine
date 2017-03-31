@@ -13,6 +13,7 @@ class Tremaine_Posttype_Neighborhoods extends Tremaine_Posttype {
 		'_html_code' 						=> array('default' => '', 'type' => 'raw' ),
 		'_longitude' 						=> array('default' => '', 'type' => 'text' ),
 		'_latitude' 						=> array('default' => '', 'type' => 'text' ),
+		'_geo_zoom' 						=> array('default' => '', 'type' => 'text' ),
 	);
 	
 	protected $args = array(
@@ -41,6 +42,8 @@ class Tremaine_Posttype_Neighborhoods extends Tremaine_Posttype {
 		if ( ! empty( $settings['_property_filter_compare'] ) ) $ls .= 'compare="' . $settings['_property_filter_compare'] . '" ';
 		$ls .= ' posts_per_page="6"]';
 		
+		$geo_zoom = ( ! empty( $settings['_geo_zoom'] ) ) ? $settings['_geo_zoom'] : 14;
+		
 		echo do_shortcode( $ls );
 		
 		include locate_template( 'inc/inc-single-neighborhood.php' );
@@ -53,20 +56,32 @@ class Tremaine_Posttype_Neighborhoods extends Tremaine_Posttype {
 		if ( is_active_sidebar( 'tremaine_page_after') ) {
 		
 			echo '<section class="tre-page-after"><div class="wrap">';
-			
-			dynamic_sidebar( 'tremaine_page_after' ); 
-			
-			echo '</div></section>';
+				
+				ob_start();
+				
+					dynamic_sidebar( 'tremaine_page_after' ); 
+				
+				$html = ob_get_clean();
+				
+				echo apply_filters( 'do_modal_windows', $html );
+				
+				echo '</div></section>';
 			
 		} // end if
 		
 		if ( is_active_sidebar( 'tremaine_page_footer_before') ) {
 		
 			echo '<nav class="tre-page-after-nav"><div class="wrap">';
-			
-			dynamic_sidebar( 'tremaine_page_footer_before' );
-			
-			echo '</div></nav>';
+				
+				ob_start();
+				
+					dynamic_sidebar( 'tremaine_page_footer_before' );
+				
+				$html = ob_get_clean();
+				
+				echo apply_filters( 'do_modal_windows', $html );
+				
+				echo '</div></nav>';
 			
 		} // end if
 		

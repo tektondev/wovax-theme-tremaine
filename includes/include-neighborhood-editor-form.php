@@ -37,5 +37,9 @@
     	<label>Longitude</label>
     	<input type="text" name="_longitude" value="<?php echo $settings['_longitude'];?>" />
     </div>
+    <div class="wx-field">
+    	<label>Map Zoom Level</label>
+    	<input type="text" name="_geo_zoom" value="<?php echo $settings['_geo_zoom'];?>" />
+    </div>
 </fieldset>
 <hr />

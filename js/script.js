@@ -14,7 +14,7 @@ var tremaine = {
 		tremaine.form.init();
 		tremaine.favorite.init();
 		tremaine.menu.init();
-		
+		jQuery( document ).ready(function(e) { tremaine.lazy_load.preload(); });	
 	},
 	
 	menu:{
@@ -176,9 +176,9 @@ var tremaine = {
 	
 	modal: {
 		
-		bg:false,
+		//bg:false,
 		
-		frame:false,
+		//frame:false,
 		
 		init:function(){
 			
@@ -386,6 +386,8 @@ var tremaine = {
 			
 			console.log( frame );
 			
+			tremaine.lazy_load.load( frame );
+			
 			tremaine.modal.set_height( frame.parent() );
 			
 			if ( width ){
@@ -419,6 +421,37 @@ var tremaine = {
 		}
 		
 	}, // end modal
+	
+	lazy_load:{
+		
+		preload:function(){
+			
+			tremaine.lazy_load.load( jQuery( 'body' ) );
+			
+		}, 
+		
+		load:function( wrap ){
+			
+			wrap.find('.not-loaded').each( function(){
+				
+				var t = jQuery( this );
+				
+				var img_url = t.data('imageurl');
+				
+				if ( t.is( 'img' ) ){
+					
+					t.attr( 'src', img_url );
+					
+				} else {
+					
+					t.css('background-image', 'url(' + img_url + ')' );
+					
+				} // end if
+				
+			});
+		},
+		
+	}, // end lazy_load
 	
 	share_modal:{
 		

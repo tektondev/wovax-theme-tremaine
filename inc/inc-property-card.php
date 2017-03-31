@@ -10,11 +10,11 @@
     </li>
     <li class="tre-gallery-card-details">
         <ul class="tre-gallery-side-left">
-            <li class="tre-col-two"><a href="#" class="property-quick-view tre-light-link tre-icon-after tre-modal show-modal" data-modalid="tre-property-<?php echo $property->get_id();?>">Quick View <i class="fa fa-caret-right" aria-hidden="true"></i></a></li>
+            <li class="tre-col-two"><a href="<?php echo $property->get_link();?>" class="property-quick-view tre-light-link tre-icon-after tre-modal show-modal" data-modalid="tre-property-<?php echo $property->get_id();?>">Quick View <i class="fa fa-caret-right" aria-hidden="true"></i></a></li>
             <li class="tre-col-one"><?php echo $property->get_bed_text( true ); echo $property->get_bath_text();?>&nbsp;</li>
         </ul> 
     </li>
 </ul>
 <?php $tremaine_modals['modal-' . $property->get_id() ] = '<div id="tre-property-' . $property->get_id() . '" class="tre-modal-content">' . $property->get_modal() . '</div>';?>
-<a href="#" class="tre-full-link tre-modal show-modal" data-modalid="tre-property-<?php echo $property->get_id();?>"></a>
+<a href="<?php echo $property->get_link();?>" class="tre-full-link tre-modal show-modal" data-modalid="tre-property-<?php echo $property->get_id();?>"></a>
 </li>

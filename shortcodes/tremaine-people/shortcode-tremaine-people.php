@@ -78,8 +78,13 @@ class Shortcode_Tremaine_People extends Tremaine_Shortcode {
 					'link' 			=> get_post_permalink(),
 					'img' 			=> get_post_meta( get_the_ID(), '_primary_photo_url', true ),
 					'position' 		=> get_post_meta( get_the_ID(), '_position', true ),
+					'display_name'  => get_post_meta( get_the_ID(), '_display_name', true ),
+					'first_name'  	=> get_post_meta( get_the_ID(), '_first_name', true ),
+					'last_name'  	=> get_post_meta( get_the_ID(), '_last_name', true ),
 					
 				);
+				
+				if ( empty( $person['display_name' ] ) ) $person['display_name' ] = $person['first_name' ] . ' ' . $person['last_name' ];
 				
 				if ( empty( $person['excerpt'] ) ) $person['excerpt'] = $person['content'];
 				

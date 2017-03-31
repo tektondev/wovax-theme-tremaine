@@ -1171,7 +1171,7 @@ img.alignright,
 	box-sizing: border-box;
 	font-weight: 400;
 	font-size: 1.5rem;
-	letter-spacing: 2.4px;
+	letter-spacing: 2px;
 }
 
 .footer-nav .menu .menu-item > a:hover,
@@ -2495,12 +2495,6 @@ input[type="submit"].tre-button-light {
 	padding: 70px 0;
 }
 
-
-
-.tre-property-single {
-	padding: 87px 0;
-}
-
 .tre-property-single h1 {
     font-weight: 300;
     font-size: 3.8rem;
@@ -3712,6 +3706,9 @@ input[type="submit"].tre-button-light {
 		display: block;
 		padding: 0;
 		margin: 0;
+	}
+	.footer-nav .menu .menu-item > a {
+		display: inline-block;
 	}
 	
 	.footer-nav .widget {

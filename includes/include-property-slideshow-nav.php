@@ -5,8 +5,12 @@
         	<?php foreach( $image_sets as $index => $image_set ):?>
             <ul class="property-nav-slide <?php if( $index == 0 ) echo 'is-active';?>">
                 <?php $i = 0; foreach( $image_set as $image ):?>
-                <li class="property-thumbnail <?php if ( $i == 0 && $index == 0 ) echo ' is-active';?>" style="background-image:url(<?php echo $image['full'];?>)"><img src="<?php echo $image['thumbnail'];?>" style="display:none;width: 100%;"/></li>
-                <?php $i++; endforeach;?>
+                	<?php if ( $lazy_load ):?>
+                	<li class="property-thumbnail not-loaded <?php if ( $i == 0 && $index == 0 ) echo ' is-active';?>" data-imageurl="<?php echo $image['thumbnail'];?>" style="background-image:url()"><img class="not-loaded" data-imageurl="<?php echo $image['thumbnail'];?>" src="" style="display:none;width: 100%;"/></li>
+                	<?php else:?>
+                    <li class="property-thumbnail <?php if ( $i == 0 && $index == 0 ) echo ' is-active';?>" style="background-image:url(<?php echo $image['thumbnail'];?>)"><img src="<?php echo $image['thumbnail'];?>" style="display:none;width: 100%;"/></li>
+                    <?php endif;?>
+				<?php $i++; endforeach;?>
             </ul>
             <?php endforeach;?>
         </div>

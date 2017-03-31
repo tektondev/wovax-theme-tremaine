@@ -2,7 +2,7 @@
 	<div class="image-wrapper bg-image-wrapper" style="<?php if ( $person['img'] ) :?> background-image:url(<?php echo $person['img'];?>);<?php endif;?>">
     </div>
     <div class="caption-wrapper">
-        <h3><?php echo $person['title'];?></h3>
+        <h3><?php echo $person['display_name' ];?></h3>
         <h4><?php echo $person['position'];?></h4>
         <ul class="details">
             <li class="summary">
