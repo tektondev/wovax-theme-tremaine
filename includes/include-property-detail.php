@@ -15,10 +15,15 @@
                     <ul class="property-data">
                     	<li><?php
 							echo $this->get_bed_text( true );
-							echo $this->get_bath_text();
+							echo $this->get_bath_text(); 
 						?></li>
                         <?php if( ! empty( $this->get_field('Year_Built') ) ):?><li><span>YEAR BUILT:</span> <?php echo $this->get_field('Year_Built');?></li><?php endif;?>
                         <?php if( ! empty( $this->get_field('Lot_Size') ) ):?><li><span>LOT SIZE:</span> <?php echo $this->get_field('Lot_Size');?></li><?php endif;?>
+                        <?php if ( ! empty( $agent_contact ) ):?>
+                        	<li><span>AGENT:</span> <?php echo $agent_contact['name'];?></li>
+                            <?php if ( ! empty( $agent_contact['phone'] ) ):?><li><span>PHONE:</span> <?php echo $agent_contact['phone'];?></li><?php endif;?>
+                            <?php if ( ! empty( $agent_contact['email'] ) ):?><li><span>EMAIL:</span> <a href="mailto:<?php echo $this->get_email();?>" ><?php echo $this->get_email();?></a></li><?php endif;?>
+                        <?php endif;?>
                         <?php if( ! empty( $this->get_ppsf() ) ):?><li><span>PRICE/ SQ FEET:</span> <?php echo $this->get_ppsf();?></li><?php endif;?>
                        <?php if( ! empty( $this->get_field('Annual_Taxes') ) ):?> <li><span>ANNUAL TAXES:</span> <?php echo $this->display_money( $this->get_field('Annual_Taxes') );?></li><?php endif;?>
                     </ul>
@@ -60,6 +65,14 @@
                     </ul>
                 </li>
         	</ul>
+            <?php if ( $this->get_field('Video_URL') ):?>
+            	<div class="property-video">
+            	<?php if ( strpos( $this->get_field('Video_URL'), 'youtube' ) || strpos( $this->get_field('Video_URL'), 'vimeo' ) ):?>
+                	<img src="<?php echo WOVAXTREMAINEURL ?>images/spacer16x9.gif" />
+                    <?php echo wp_oembed_get( $this->get_field('Video_URL') );?>
+                <?php endif;?>
+            	</div>
+            <?php endif;?>
         </div>
         <?php $p_features = $this->get_features(); if ( ! empty( $p_features ) ):?>
         <h2 class="tre-accordion tre-active">Amenities</h2>
@@ -126,6 +139,9 @@
 		  </script>
 		  
         <?php endif;?>
+    </section>
+    <section id="property-legal">
+    	<?php echo wpautop( get_option('wovax_rets_legal_notice') );?>
     </section>
 </div>
 <?php echo do_shortcode( '[tremaine_modal id="4072008"][tremaine_modal id="4072050"]' );?>

@@ -20,12 +20,14 @@ Post Gallery
 Post Type: Post
 Property Listings Gallery
 Property Cards
+Property Detail
 Property Listing
 Property Slideshow
 Shortcodes
 - People
 - Videos
 Sidebars
+Site Header
 Tabs
 Widgets
 Wovax Shortcodes
@@ -106,10 +108,10 @@ h2.section-heading-center {
 a.wx-footer-menu-left-arrow,
 .wx-footer-menu-left-arrow > a,
 .wx-header-menu-left-arrow > a {
-	background-image: url(../images/arrow-right-orange.png);
+	background-image: url(../images/arrow-right-blue.png);
 	background-repeat: no-repeat;
 	background-position: left center;
-	padding-left: 24px;
+	padding-left: 30px;
 }
 a.wx-header-menu-left-heart:before,
 .wx-header-menu-left-heart > a:before {
@@ -742,6 +744,29 @@ ul.tremaine-office-gallery {
 	font-size: 1.25rem;
 	letter-spacing: 1px;
 }
+/* Property Detail
+----------------------------------------------------------------------- */
+.property-listing-detail .property-data a {
+	text-decoration: none;
+}
+
+.property-listing-detail .property-video {
+	position: relative;
+	margin-bottom: 60px;
+}
+
+.property-listing-detail .property-video > img {
+	width: 100%;
+	height: auto;
+}
+
+.property-listing-detail .property-video iframe {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
 
 /* Property Listing
 ----------------------------------------------------------------------- */
@@ -759,6 +784,12 @@ ul.tremaine-office-gallery {
 	margin: 0;
 	padding: 0;
 	opacity: 1 !important;
+}
+
+#property-legal {
+	padding: 40px 0 60px;
+	color: #555;
+	font-size: 1.3rem;
 }
 
 
@@ -1052,6 +1083,11 @@ ul.tremaine-office-gallery {
 .sidebar-primary a:hover {
 	color: #42a5f5;
 }
+/* Site Header
+----------------------------------------------------------------------- */
+.home .tre-secondary-nav {
+	display: none;
+}
 /* Tabs
 ----------------------------------------------------------------------- */
 .tre-tabs .tab-section {
@@ -1166,6 +1202,9 @@ ul.tremaine-office-gallery {
 	}
 	#tre-profile-video-banner {
 		margin-top: 0;
+	}
+	.home .tre-secondary-nav {
+		display: block;
 	}
 	
 }

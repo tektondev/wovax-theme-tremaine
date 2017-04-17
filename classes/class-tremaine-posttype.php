@@ -111,23 +111,35 @@ abstract class Tremaine_Posttype {
 			
 			if ( is_active_sidebar( 'tremaine_page_after') ) {
 		
-				echo '<section class="tre-page-after"><div class="wrap">';
+			echo '<section class="tre-page-after"><div class="wrap">';
 				
-				dynamic_sidebar( 'tremaine_page_after' ); 
+				ob_start();
+				
+					dynamic_sidebar( 'tremaine_page_after' ); 
+				
+				$html = ob_get_clean();
+				
+				echo apply_filters( 'do_modal_windows', $html );
 				
 				echo '</div></section>';
-				
-			} // end if
 			
-			if ( is_active_sidebar( 'tremaine_page_footer_before') ) {
-			
-				echo '<nav class="tre-page-after-nav"><div class="wrap">';
+		} // end if
+		
+		if ( is_active_sidebar( 'tremaine_page_footer_before') ) {
+		
+			echo '<nav class="tre-page-after-nav"><div class="wrap">';
 				
-				dynamic_sidebar( 'tremaine_page_footer_before' );
+				ob_start();
+				
+					dynamic_sidebar( 'tremaine_page_footer_before' );
+				
+				$html = ob_get_clean();
+				
+				echo apply_filters( 'do_modal_windows', $html );
 				
 				echo '</div></nav>';
-				
-			} // end if
+			
+		} // end if
 		
 	}
 	

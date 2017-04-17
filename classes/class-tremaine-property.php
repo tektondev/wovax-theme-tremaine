@@ -28,6 +28,7 @@ class Tremaine_Property {
 	protected $square_footage = '';
 	protected $ppsf = '';
 	protected $type = '';
+	protected $email = '';
 	protected $fields = array(
 		'Garage_Details' 	=> '',
 		'Year_Built' 		=> '',
@@ -44,6 +45,9 @@ class Tremaine_Property {
 		'geo_latitude' 		=> '',
 		'geo_longitude' 	=> '',
 		'geo_public' 		=> '',
+		'Agent_Email'		=> '',
+		'Listing_Agent'		=> '',
+		'Video_URL'			=> '',
 	);
 	protected $features = array();
 	
@@ -73,6 +77,7 @@ class Tremaine_Property {
 	public function get_type(){ return $this->type; }
 	public function get_field( $key ){ return ( array_key_exists( $key, $this->fields ) ) ?  $this->fields[ $key ] : ''; } // end get_field
 	public function get_features(){ return $this->features; }
+	public function get_email() { return $this->email; }
 	
 	public function __construct(){
 		
@@ -219,7 +224,13 @@ class Tremaine_Property {
 			
 		} // end foreach
 		
-		
+		if ( $this->get_field( 'Agent_Email' ) ){
+			
+			$email_array = explode( ';', $this->get_field( 'Agent_Email' ) );
+			
+			$this->email = $email_array[0]; 
+			
+		} // end if
 		
 	} // end set_property
 	
@@ -290,6 +301,33 @@ class Tremaine_Property {
 	
 	
 	public function get_detail_page(){
+		
+		$accepted_emails = array( 'jamesonsir', 'sothebysrealty' );
+		
+		$agent_contact = array();
+		
+		foreach( $accepted_emails as $email ){
+			
+			$set_email = $this->get_field( 'Agent_Email' );
+			
+			if ( strpos( $this->get_field( 'Agent_Email' ),  $email ) !== false ){
+				
+				$agent_contact['name'] = $this->get_field( 'Listing_Agent' );
+				
+				$agent_contact['email'] = $this->get_field( 'Agent_Email' );
+				
+				$agent_contact['phone'] = $this->get_field( 'Phone' );
+				
+				break;
+				
+			} // end if
+			
+		} // end foreach
+		
+		
+		
+		//var_dump( $this->get_field( 'Agent_Email' ) );
+		
 		
 		ob_start();
 		

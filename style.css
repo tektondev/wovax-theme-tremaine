@@ -1784,6 +1784,16 @@ p.entry-meta {
 /* ---------------------------------------------------------------------- */
 
 /* Hooks */
+.mobile-only,
+.mobile-only-inline {
+	display: none !important;
+}
+.desktop-only {
+	display: block;
+}
+.desktop-only-inline {
+	display: block;
+}
 .tre-button-dark {
 	display: inline-block;
 	border-radius: 3px;
@@ -3119,6 +3129,15 @@ input[type="submit"].tre-button-light {
 	}
 }
 @media only screen and (max-width: 1023px) {
+	.mobile-only {
+		display: block !important;
+	}
+	.mobile-only-inline {
+		display: inline-block !important;
+	}
+	.desktop-only {
+		display: none;
+	}
 	.genesis-nav-menu .menu-item > .sub-menu {
 		border-top: 1px solid #eee;
 		position: relative;
@@ -3312,7 +3331,7 @@ input[type="submit"].tre-button-light {
 	
 	.tre-secondary-nav .widget_text {
 		float: none;
-		margin-bottom: 8px;
+		margin-bottom: 0;
 	}
 	
 	.site-header .widget-area {
@@ -3539,15 +3558,25 @@ input[type="submit"].tre-button-light {
 	.tre-secondary-nav {
 		padding: 0 !important;
 		position: relative;
+		background-color: #1e3652;
+		text-align: right;
 	}
 	
 	.tre-secondary-nav a.tre-button-dark {
-		position: absolute;
+		/*position: absolute;
 		top: 0;
-		right: 0;
+		right: 0;*/
 		padding-left: 20px;
     	padding-right: 20px;
 		border-radius: 0;
+	}
+	.tre-secondary-nav .wovax-custom-menu-link {
+		font-size: 1.6rem;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.tre-secondary-nav a, .tre-secondary-nav i, .tre-secondary-nav .wovax-custom-menu-link i {
+		color: #fff;
 	}
 	
 	.header-widget-area a:hover {
@@ -3759,21 +3788,9 @@ input[type="submit"].tre-button-light {
 		padding: 150px 0 !important;
 
 	}
-	
+	.tre-secondary-nav .wovax-custom-menu-link,
 	.tre-secondary-nav a.tre-button-dark {
-		position: absolute;
-		top: -40px;
-		left: 0;
-		right: 0;
-		padding-left: 5%;
-    	padding-right: 5%;
-		border-radius: 0;
-		text-align: right;
 		font-size: 1.4rem;
-	}
-	
-	.tre-secondary-nav{
-		margin-top: 40px !important;
 	}
 	
 	.frontpage-feature .tremaine-button-light {

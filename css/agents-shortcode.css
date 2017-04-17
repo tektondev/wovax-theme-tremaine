@@ -878,6 +878,8 @@
 	width: 100%;
 	height: auto;
 	border: 2px solid #bebfc1;
+	-webkit-filter: grayscale(100%);
+    filter: gray;
 }
 
 .tre-profile-full-card h1 {
@@ -946,7 +948,6 @@
 }
 
 .tre-profile-about-content {
-	max-width: 600px;
 	font-size: 1.5rem;
 	line-height: 2.5rem;
 }
@@ -958,7 +959,7 @@
 
 .tre-profile-about-into {
 	background-color: #f1f1f2;
-	background-image: url(../resources/agent-about-background.jpg);
+	/*background-image: url(../resources/agent-about-background.jpg);*/
 	background-repeat: no-repeat;
 	background-position: right;
 	background-size: auto 100%;

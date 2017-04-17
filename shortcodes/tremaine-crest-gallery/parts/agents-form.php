@@ -5,7 +5,7 @@
         </div>
         <div class="agents-search-field">
             <select name="company-filter" class="tremaine-submit-on-change">
-            	<option value="">Filter By Company</option>
+            	<option value="">Filter By Office</option>
                 <option value="0" <?php selected( 0, $presets['company-filter'] );?>>All Companies</option>
 				<?php foreach( $offices as $office_id => $office_array ):?>
                 <option value="<?php echo $office_id; ?>" <?php selected( $office_id, $presets['company-filter'] );?>><?php echo $office_array['name'];?></option>

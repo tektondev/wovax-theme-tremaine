@@ -11,10 +11,6 @@ class Shortcode_Tremaine_People extends Tremaine_Shortcode {
 	
 	public function render_shortcode( $atts , $content, $tag, $atts_orig ){
 		
-		ini_set('display_errors', 1);
-		ini_set('display_startup_errors', 1);
-		error_reporting(E_ALL);
-		
 		$people = $this->get_people( $atts );
 		
 		$people_cards = $this->get_people_cards( $people );

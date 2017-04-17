@@ -80,9 +80,11 @@ class Tremaine_Post_Type_Office extends Tremaine_Posttype  {
 	
 	public function render_shortcode( $atts, $content, $tag ){
 		
+		var_dump( $atts );
+		
 		$html = '';
 		
-		$cards = $this->get_office_cards();
+		$cards = $this->get_office_cards( $atts );
 		
 		ob_start();
 		
@@ -95,7 +97,7 @@ class Tremaine_Post_Type_Office extends Tremaine_Posttype  {
 	} // end render_shortcode
 	
 	
-	public function get_office_cards(){
+	public function get_office_cards( $atts ){
 		
 		$html = '';
 		
@@ -117,7 +119,7 @@ class Tremaine_Post_Type_Office extends Tremaine_Posttype  {
 		
 				$settings['link'] = get_post_permalink();
 				
-				$offices[] = $this->get_office_card( $settings, $the_query->post );
+				$offices[] = $this->get_office_card( $settings, $the_query->post, $atts );
 				
 			} // end while
 
@@ -140,7 +142,7 @@ class Tremaine_Post_Type_Office extends Tremaine_Posttype  {
 	}
 	
 	
-	public function get_office_card( $settings, $post ){
+	public function get_office_card( $settings, $post, $atts = array() ){
 		
 		ob_start();
 		

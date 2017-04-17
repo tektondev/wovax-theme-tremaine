@@ -208,6 +208,7 @@ var tremaine = {
 				'click',
 				'.show-modal',
 				function( e ){
+					console.log( 'show modal' );
 					tremaine.modal.show( jQuery( this ) , e );
 				}
 			);
@@ -262,6 +263,8 @@ var tremaine = {
 			} else {
 			
 				var modal_id = item_clicked.data('modalid');
+				
+				console.log( modal_id );
 				
 				var modal_content_wrap = tremaine.modal.get_modal_content_wrapper( modal_id );
 				

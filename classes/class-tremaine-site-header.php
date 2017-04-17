@@ -18,17 +18,33 @@ class Tremaine_Site_Header {
 	
 	public function add_secondary_nav(){
 		
-		if ( is_active_sidebar( 'tremaine_secondary_nav') && ! is_front_page() ) {
+		if ( is_active_sidebar( 'tremaine_secondary_nav') ) {
 		
 			echo '<div class="tre-secondary-nav"><div class="wrap">';
 			
-			//ob_start();
+			ob_start();
 			
 			dynamic_sidebar( 'tremaine_secondary_nav' );
 			
-			//$html = ob_get_clean();
+			$html = ob_get_clean();
 			
-			//echo apply_filters( 'do_modal_windows', $html );
+			echo apply_filters( 'do_modal_windows', $html );
+			
+			echo '</div></div>';
+			
+		} // end if
+		
+		if ( is_active_sidebar( 'tremaine_mobile') ) {
+		
+			echo '<div class="site-nav-secondary-mobile"><div class="wrap">';
+			
+			ob_start();
+			
+			dynamic_sidebar( 'tremaine_mobile' );
+			
+			$html = ob_get_clean();
+			
+			echo apply_filters( 'do_modal_windows', $html );
 			
 			echo '</div></div>';
 			

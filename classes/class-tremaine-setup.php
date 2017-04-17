@@ -384,6 +384,13 @@ class Tremaine_Setup {
 			'after_widget'  => '</div>', 
 			) 
 		);
+		register_sidebar( array( 
+			'id' 			=> 'tremaine_mobile', 
+			'name' 			=> 'Mobile Secondary Nav',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>', 
+			) 
+		);
 		
 		register_sidebar( array( 
 			'id' 			=> 'tremaine_page_after', 
