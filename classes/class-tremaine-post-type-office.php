@@ -80,8 +80,6 @@ class Tremaine_Post_Type_Office extends Tremaine_Posttype  {
 	
 	public function render_shortcode( $atts, $content, $tag ){
 		
-		var_dump( $atts );
-		
 		$html = '';
 		
 		$cards = $this->get_office_cards( $atts );

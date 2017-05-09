@@ -1,9 +1,9 @@
 <div class="tremaine-office-card">
 	<div class="image-wrapper bg-image-wrapper" style="background-image:url(<?php echo $settings['featured_image'];?>);">
-    <a href="<?php echo $settings['link'];?>" ></a>
+    <a href="<?php echo $atts['agents_url'] . '?company-filter=' . $settings['_office_id'];?>" ></a>
     </div>
     <div class="caption-wrapper">
-        <h3><a href="<?php echo $settings['link'];?>"><?php echo $settings['_title'];?></a></h3>
+        <h3><a href="<?php echo $atts['agents_url'] . '?company-filter=' . $settings['_office_id'];?>"><?php echo $settings['_title'];?></a></h3>
         <ul class="details">
             <li class="address">
             	<?php if ( $settings['_map_link'] ) { echo '<a href="' . $settings['_map_link'] . '">';} ?>

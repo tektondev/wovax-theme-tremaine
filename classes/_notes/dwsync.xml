@@ -5,7 +5,7 @@
 <file name="class-tremaine-site-header.php" server="ftp.contributelist.com//public_html/wovax.tektondev.com/wp-content/themes/tremaine/" local="131235047537257563" remote="131235083400000000" Dst="1" />
 <file name="class-tremaine-site-footer.php" server="ftp.contributelist.com//public_html/wovax.tektondev.com/wp-content/themes/tremaine/" local="131235510500565995" remote="131235546000000000" Dst="1" />
 <file name="class-tremaine-site-footer.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131327581156445042" remote="131327106000000000" Dst="1" />
-<file name="class-tremaine-setup.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131368052654654500" remote="131368160400000000" Dst="2" />
+<file name="class-tremaine-setup.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131383234887958317" remote="131383342800000000" Dst="2" />
 <file name="class-tremaine-shortcode.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131366331489200006" remote="131339305800000000" Dst="2" />
 <file name="class-tremaine-shortcode-agents.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131327581149917943" remote="131327116200000000" Dst="1" />
 <file name="class-tremaine-demo.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131327581126271610" remote="131242149000000000" Dst="1" />
@@ -26,5 +26,5 @@
 <file name="single-people.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131327581171263469" remote="131300032200000000" Dst="1" />
 <file name="class-tremaine-post-type-modal.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131366331480017999" remote="131339090400000000" Dst="2" />
 <file name="class-tremaine-import-page.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131327581126371668" remote="131327247600000000" Dst="1" />
-<file name="class-tremaine-post-type-office.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131368065289430104" remote="131368173000000000" Dst="2" />
+<file name="class-tremaine-post-type-office.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131377948753134108" remote="131378056800000000" Dst="2" />
 </dwsync>

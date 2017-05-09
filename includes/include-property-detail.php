@@ -19,13 +19,13 @@
 						?></li>
                         <?php if( ! empty( $this->get_field('Year_Built') ) ):?><li><span>YEAR BUILT:</span> <?php echo $this->get_field('Year_Built');?></li><?php endif;?>
                         <?php if( ! empty( $this->get_field('Lot_Size') ) ):?><li><span>LOT SIZE:</span> <?php echo $this->get_field('Lot_Size');?></li><?php endif;?>
-                        <?php if ( ! empty( $agent_contact ) ):?>
+                        <?php if( ! empty( $this->get_ppsf() ) ):?><li><span>PRICE/ SQ FEET:</span> <?php echo $this->get_ppsf();?></li><?php endif;?>
+                       <?php if( ! empty( $this->get_field('Annual_Taxes') ) ):?> <li><span>ANNUAL TAXES:</span> <?php echo $this->display_money( $this->get_field('Annual_Taxes') );?></li><?php endif;?>
+                       <?php if ( ! empty( $agent_contact ) ):?>
                         	<li><span>AGENT:</span> <?php echo $agent_contact['name'];?></li>
                             <?php if ( ! empty( $agent_contact['phone'] ) ):?><li><span>PHONE:</span> <?php echo $agent_contact['phone'];?></li><?php endif;?>
                             <?php if ( ! empty( $agent_contact['email'] ) ):?><li><span>EMAIL:</span> <a href="mailto:<?php echo $this->get_email();?>" ><?php echo $this->get_email();?></a></li><?php endif;?>
                         <?php endif;?>
-                        <?php if( ! empty( $this->get_ppsf() ) ):?><li><span>PRICE/ SQ FEET:</span> <?php echo $this->get_ppsf();?></li><?php endif;?>
-                       <?php if( ! empty( $this->get_field('Annual_Taxes') ) ):?> <li><span>ANNUAL TAXES:</span> <?php echo $this->display_money( $this->get_field('Annual_Taxes') );?></li><?php endif;?>
                     </ul>
                     <ul class="property-pins">
                     	<li><?php if ( is_user_logged_in() ):?><?php echo do_shortcode( '[favorite_button post_id="' . $this->get_id() . '"]' );?><?php else:?><a href="#" class="show-modal" data-modalid="wx-login" data-modalwidth="500"> <i class="fa fa-star-o" aria-hidden="true"></i>Save to Favorites</a> <div id="wx-login" class="wx-modal-content"><a href="/search-results/?action=create-account" class="tre-button-light">Create Your Account</a><hr /><?php wp_login_form( array( 'redirect' => ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?save-favorite=true', ) );?></div><?php endif;?></li>

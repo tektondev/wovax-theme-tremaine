@@ -178,11 +178,12 @@ class Shortcode_Tremaine_CREST_People_Gallery extends Tremaine_Shortcode {
 			'orderby' => 'title',
 			'sort_by' => false,
 			'company-filter' => '',
+			'agent-keyword' => '',
 		);
 		
 		if ( isset( $_GET['cpage'] ) ) $atts['paged'] = sanitize_text_field( $_GET['cpage'] );
 		
-		if ( isset( $_GET['skeyword'] ) ) $atts['keyword'] = sanitize_text_field( $_GET['skeyword'] );
+		if ( isset( $_GET['agent-keyword'] ) ) $atts['agent-keyword'] = sanitize_text_field( $_GET['agent-keyword'] );
 		
 		if ( isset( $_GET['sort_by'] ) ) $atts['sort_by'] = sanitize_text_field( $_GET['sort_by'] );
 		
@@ -231,7 +232,9 @@ class Shortcode_Tremaine_CREST_People_Gallery extends Tremaine_Shortcode {
 			
 		} // end if
 		
-		if ( $presets['keyword'] ){
+		if ( isset( $_GET['test'] ) ) var_dump( $presets['agent-keyword'] );
+		
+		if ( $presets['agent-keyword'] ){
 			
 			$the_query = $this->get_search_query( $presets, $args );
 				
@@ -265,7 +268,7 @@ class Shortcode_Tremaine_CREST_People_Gallery extends Tremaine_Shortcode {
 		$post_ids = array();
 		
 		$s_query_args = $args;
-		$meta_query_args = $args;
+		/*$meta_query_args = $args;
 		$meta_query = array();
 		
 		$meta_fields = array(
@@ -286,7 +289,7 @@ class Shortcode_Tremaine_CREST_People_Gallery extends Tremaine_Shortcode {
 			
 			$meta_query[] = array(
 				'key'     => $meta_field,
-				'value'   => $presets['keyword'],
+				'value'   => $presets['agent-keyword'],
 				'compare' => 'LIKE',
 			);
 			
@@ -320,7 +323,11 @@ class Shortcode_Tremaine_CREST_People_Gallery extends Tremaine_Shortcode {
 		
 		//return $m_query;
 		
-		$s_query_args['s'] = $presets['keyword'];
+		*/
+		
+		$s_query_args['s'] = $presets['agent-keyword'];
+		
+		//if ( ! empty( $_GET['test'] ) ) var_dump( $s_query_args );
 		
 		$s_query = new WP_Query( $s_query_args );
 		

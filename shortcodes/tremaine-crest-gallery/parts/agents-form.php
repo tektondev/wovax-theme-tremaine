@@ -1,7 +1,7 @@
 <section id="browse-agents-shortcode">
     <fieldset class="agents-search-bar-wrapper">
         <div class="agents-search-field">
-            <input type="text" name="skeyword" value="<?php echo $presets['keyword'];?>" placeholder="Search By Name" />
+            <input type="text" name="agent-keyword" value="<?php echo $presets['agent-keyword'];?>" placeholder="Search By Name" />
         </div>
         <div class="agents-search-field">
             <select name="company-filter" class="tremaine-submit-on-change">

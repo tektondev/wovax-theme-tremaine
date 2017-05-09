@@ -36,7 +36,67 @@ class Tremaine_Setup {
 		
 		add_filter( 'get_the_archive_title', array( $this, 'filter_get_the_archive_title') );
 		
+		add_filter( 'posts_where', array( $this, 'title_filter' ), 10, 2 );
+		
 	} // end __construct
+	
+	
+	public function title_filter( $where, &$wp_query ){
+		
+		global $wpdb;
+		
+		if( empty( $_GET['agent-keyword'] ) ) return $where;
+	
+		if ( $search_term = $wp_query->get( 's' ) ){
+			
+			/*using the esc_like() in here instead of other esc_sql()*/
+			
+			$search_term = $wpdb->esc_like( $search_term );
+			
+			$search_term = ' \'%' . $search_term . '%\'';
+			
+			$where .= ' AND ' . $wpdb->posts . '.post_title LIKE '.$search_term;
+			
+		} // end if
+	
+		return $where;
+		
+	} // end title_filter
+	
+	
+	public function wpse_11826_search_by_title( $search, $wp_query ) {
+		
+		//if( ! empty( $_GET['test'] ) ) var_dump( $wp_query );
+		
+		if( empty( $_GET['agent-keyword'] ) ) return $search;
+		
+		//if( ! empty( $_GET['test'] ) ) var_dump( $wp_query );
+		
+		
+		if ( ! empty( $search ) && ! empty( $wp_query->query_vars['search_terms'] ) ) {
+			
+			global $wpdb;
+	
+			$q = $wp_query->query_vars;
+			
+			$n = ! empty( $q['exact'] ) ? '' : '%';
+	
+			$search = array();
+	
+			foreach ( ( array ) $q['search_terms'] as $term )
+			
+				$search[] = $wpdb->prepare( "$wpdb->posts.post_title LIKE %s", $n . $wpdb->esc_like( $term ) . $n );
+	
+			if ( ! is_user_logged_in() )
+				$search[] = "$wpdb->posts.post_password = ''";
+	
+			$search = ' AND ' . implode( ' AND ', $search );
+			
+		}
+	
+		return $search;
+		
+	} // end wpse_11826_search_by_title
 	
 	
 	public function filter_get_the_archive_title( $title ){

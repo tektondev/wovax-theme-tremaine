@@ -89,6 +89,22 @@ var tremaine = {
 				}
 			);
 			
+			jQuery(document).ready( function(){ tremaine.form.populate(); } )
+			
+		},
+		
+		populate:function(){
+			
+			var title = jQuery(document).find( 'title' ).text();
+			
+			title = title.replace('"', '');
+			
+			var url = window.location.href; 
+			
+			jQuery("input[data-name='pagetitle']").val( title );
+			
+			jQuery("input[data-name='pageurl']").val( url );
+			
 		},
 		
 	},

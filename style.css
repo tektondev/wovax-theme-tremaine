@@ -3,7 +3,7 @@
 	Description: Custom child theme for <a href="http://wovax.com">Wovax</a> and the <a href="http://genesistheme.com">Genesis Framework</a>.
 	Author:      Danial Bleile
 	Author URI:  http://tektondev.com
-	Version:     0.1.1O
+	Version:     0.1.11
 	License:     GPL-2.0+
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	Template:    genesis
@@ -3360,6 +3360,14 @@ input[type="submit"].tre-button-light {
 		padding-left: 30px;
 		padding-right: 30px;
 		position: relative;
+		max-width: 100%;
+	}
+	
+	.tre-secondary-nav .wrap {
+		max-width: 100%;
+		padding-left: 30px;
+		padding-right: 30px;
+		box-sizing: border-box;
 	}
 	
 	.tremaine-arrow-right {
@@ -3467,7 +3475,6 @@ input[type="submit"].tre-button-light {
 		text-align: center;
 		position: absolute;
 		top:-60px;
-		border-left: 1px solid #ddd;
 		border-right: 1px solid #ddd;
 		font-family: fontAwesome;
 		cursor: pointer;
