@@ -10,4 +10,5 @@
             </li>
         </ul>
     </div>
+    <?php if ( ! empty( $atts['link'] ) ) :?><a class="wrap-link" href="<?php echo $person['link'] ?>"></a><?php endif;?>
 </div>

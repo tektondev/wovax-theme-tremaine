@@ -9,7 +9,15 @@ class Tremaine_Theme_Templates {
 		
 		add_action( 'wp_header', array( $this , 'edit_template' ), 99 );
 		
+		add_action( 'genesis_meta', array( $this, 'add_viewport_meta_tag' ) );
+		
 	} // end init
+	
+	function add_viewport_meta_tag() {
+		
+ 		echo '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>';
+		
+ 	} // end add_viewport_meta_tag
 	
 	
 	public function set_full_width_layout_posts( $opt ){

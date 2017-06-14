@@ -9,9 +9,18 @@ class Tremaine_Share_Modal {
 		
 		add_action( 'widgets_init', array( $this, 'register_sidebar' ) );
 		
+		add_filter( 'update_easy_social_share_description', array( $this, 'update_easy_social_share_description' ) );
+		
 		//add_action( 'loop_start', array( $this, 'jptweak_remove_share' ) );
 		
 	} // end add_modal
+	
+	
+	public function update_easy_social_share_description( $desc ){
+		
+		return 'Check out this listing: ';
+		
+	} // end update_easy_social_share_description
 	
 	
 	public function jptweak_remove_share() {

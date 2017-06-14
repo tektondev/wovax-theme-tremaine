@@ -1,6 +1,7 @@
 /* Outline
 Blog
 Buttons
+Header
 Headings
 Hooks
 Developments
@@ -86,6 +87,11 @@ body.archive main article {
 .tremaine-button-dark:hover {
 	color: #fff;
 	background-color: #73befb;
+}
+/* Header
+----------------------------------------------------------------------- */
+.header-before-nav-widgets {
+	
 }
 
 
@@ -760,8 +766,10 @@ ul.tremaine-office-gallery {
 	height: auto;
 }
 
-.property-listing-detail .property-video iframe {
-	width: 100%;
+.property-listing-detail .property-video iframe,
+.property-listing-detail .property-video video,
+.property-listing-detail .property-video .wp-video {
+	width: 100% !important;
 	height: 100%;
 	position: absolute;
 	top: 0;
@@ -983,6 +991,14 @@ ul.tremaine-office-gallery {
 }
 .tremaine-people-gallery .tremaine-people-card a {
 	text-decoration: none;
+}
+.tremaine-people-gallery .tremaine-people-card a.wrap-link {
+	position: absolute;
+	display: block;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 .tremaine-people-gallery .tremaine-people-card .summary {
 	line-height: normal;

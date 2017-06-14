@@ -48,6 +48,9 @@ class Tremaine_Property {
 		'Agent_Email'		=> '',
 		'Listing_Agent'		=> '',
 		'Video_URL'			=> '',
+		'Listing_Agency'	=> '',
+		'Primary_Agent_Id'	=> '',
+		'Virtual_Tour_Url'	=> '',
 	);
 	protected $features = array();
 	
@@ -302,27 +305,39 @@ class Tremaine_Property {
 	
 	public function get_detail_page(){
 		
-		$accepted_emails = array( 'jamesonsir', 'sothebysrealty' );
+		//$accepted_emails = array( 'jamesonsir', 'sothebysrealty' );
 		
 		$agent_contact = array();
 		
-		foreach( $accepted_emails as $email ){
+		$agent_id = $this->get_field( 'Primary_Agent_Id' );
+		
+		if ( ! empty( $agent_id ) ){
 			
-			$set_email = $this->get_field( 'Agent_Email' );
+			$agent_contact = $this->get_agent_contact_array( $agent_id );
 			
-			if ( strpos( $this->get_field( 'Agent_Email' ),  $email ) !== false ){
-				
-				$agent_contact['name'] = $this->get_field( 'Listing_Agent' );
-				
-				$agent_contact['email'] = $this->get_field( 'Agent_Email' );
-				
-				$agent_contact['phone'] = $this->get_field( 'Phone' );
-				
-				break;
-				
-			} // end if
+		} // end if
+		
+		//foreach( $accepted_emails as $email ){
 			
-		} // end foreach
+			//$set_email = $this->get_field( 'Agent_Email' );
+			
+			//if ( isset( $_GET['test'] ) ) var_dump( $this->get_agent_contact_array( $set_email ) );
+			
+			//if ( strpos( $this->get_field( 'Agent_Email' ),  $email ) !== false ){
+				
+				//$agent_contact = $this->get_agent_contact_array( $set_email );
+				
+				//$agent_contact['name'] = $this->get_field( 'Listing_Agent' );
+				
+				//$agent_contact['email'] = $this->get_field( 'Agent_Email' );
+				
+				//$agent_contact['phone'] = $this->get_field( 'Phone' );
+				
+				//break;
+				
+			//} // end if
+			
+		//} // end foreach
 		
 		
 		
@@ -336,6 +351,117 @@ class Tremaine_Property {
 		return ob_get_clean();
 		
 	} // end get_detail_page
+	
+	
+	public function get_agent_contact_array( $agent_id ){
+		
+		$agent_contact = array();
+		
+		error_reporting(E_ALL);
+		ini_set("display_errors", 1);
+		
+		$args = array(
+			'posts_per_page' 	=> 1,
+			'post_type' 		=> 'people',
+			'meta_query' 		=> array(
+				array(
+					'key'     => '_crest_id',
+					'value'   => $agent_id,
+					'compare' => 'LIKE',
+				),
+				//'relation' => 'OR',
+			),
+		);
+		
+		
+		//$emails = explode( ';' , $set_email );
+		
+		//foreach( $emails as $index => $email ){
+			
+			//$emails[ $index ] = str_replace( ' ','', $email );
+			
+			//$args['meta_query'][] = array(
+				//'key'     => '_crest_id',
+				//'value'   => $agent_id,
+				//'compare' => 'LIKE',
+			//);
+			//$args['meta_query'][] = array(
+				//'key'     => '_primary_email_manual',
+				//'value'   => $agent_id,
+				//'compare' => 'LIKE',
+			//);
+			
+		//} // end foreach
+		
+		$query = new WP_Query( $args );
+		
+		if ( $query->have_posts() ){
+			
+			while ( $query->have_posts() ) {
+				
+				$query->the_post();
+				
+				$id = get_the_ID();
+				
+				$phone = get_post_meta( $id, '_primary_phone_manual', true );
+				
+				if ( empty( $phone ) ){
+					
+					$phone = get_post_meta( $id, '_primary_phone', true );
+					
+					if ( empty( $phone ) ){
+						
+						$phone = get_post_meta( $id, '_phone_additional', true );
+						
+					} // end if
+					
+				} // end if
+				
+				if ( ! empty( $phone ) ){
+				
+					$phone_array = str_split( $phone , 3 );
+				
+					$phone = $phone_array[0];
+				
+					if ( isset( $phone_array[1] ) ) $phone .= '.' .  $phone_array[1];
+					if ( isset( $phone_array[2] ) ) $phone .= '.' .  $phone_array[2];
+					if ( isset( $phone_array[3] ) ) $phone .= $phone_array[3];
+			
+					$agent_contact['phone'] = $phone;
+			
+				} // end if*/
+				
+				$email = get_post_meta( $id, '_primary_email_manual', true );
+				
+				if ( empty( $email ) ){
+					
+					$email = get_post_meta( $id, '_primary_email', true );
+					
+					if ( empty( $email ) ){
+						
+						$email = get_post_meta( $id, '_primary_email_additional', true );
+						
+					} // end if
+					
+				} // end if
+				
+				if ( ! empty( $email ) ){
+					
+					$agent_contact['email'] = $email;
+					
+				} // end if
+				
+				$agent_contact['name'] = $this->get_field( 'Listing_Agent' );
+				
+			} // end while
+			
+			wp_reset_postdata();
+			
+		} // end if
+		
+		return $agent_contact;
+		
+	} // end get_agent_array
 	
 	
 	public function get_image_array( $img_id ){

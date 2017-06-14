@@ -36,7 +36,7 @@ class Tremaine_Posttype_Neighborhoods extends Tremaine_Posttype {
 		
 		$settings = $this->get_settings( $post->ID );
 		
-		$ls = '[tremaine_listing ';
+		$ls = '[tremaine_listing sort_by="Price-numeric-desc" ';
 		if ( ! empty( $settings['_property_filter_field_name'] ) ) $ls .= 'custom_field="' . $settings['_property_filter_field_name'] . '" ';
 		if ( ! empty( $settings['_property_filter_field_value'] ) ) $ls .= 'custom_field_value="' . $settings['_property_filter_field_value'] . '" ';
 		if ( ! empty( $settings['_property_filter_compare'] ) ) $ls .= 'compare="' . $settings['_property_filter_compare'] . '" ';

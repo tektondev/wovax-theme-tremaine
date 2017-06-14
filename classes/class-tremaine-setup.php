@@ -12,9 +12,6 @@ class Tremaine_Setup {
 		
 		add_action( 'wp_head' , array( $this , 'tremaine_wp_head'), 99 );
 		
-		// Adds custom header support to customizer
-		//add_action( 'customize_register', array( $this , 'add_customizer_settings' ) );
-		
 		add_action( 'init' , array( $this , 'register_sidebars' ) );
 		
 		
@@ -53,9 +50,25 @@ class Tremaine_Setup {
 			
 			$search_term = $wpdb->esc_like( $search_term );
 			
-			$search_term = ' \'%' . $search_term . '%\'';
+			$terms = explode( ' ', $search_term );
 			
-			$where .= ' AND ' . $wpdb->posts . '.post_title LIKE '.$search_term;
+			foreach( $terms as $term ){
+				
+				$term_regex = '\'%' . $term . '%\'';
+				
+				$where .= ' AND ' . $wpdb->posts . '.post_title LIKE '.$term_regex;
+				
+			} // end foreach
+			
+			//$search_term = '\'%' . $search_term . '%\'';
+			
+			
+			
+			//$search_term = str_replace( ' ', '%', $search_term );
+			
+			//$where .= ' AND ' . $wpdb->posts . '.post_title LIKE '.$search_term;
+			
+			//if ( ! empty( $_GET['test'] ) ) var_dump( $where );
 			
 		} // end if
 	
@@ -309,88 +322,6 @@ class Tremaine_Setup {
 	} // end do_add_custom_scripts
 	
 	
-	/*public function add_customizer_settings( $wp_customize ){
-		
-		$panel = 'tremaine_panel';
-		
-		$wp_customize->add_panel( $panel, 
-			array(
-		  		'title' 		=> 'Tremaine Theme Options',
-		  		'description' 	=> 'Options for the Tremaine theme',
-		  		'priority' 		=> 10, // Mixed with top-level-section hierarchy.
-			) 
-		);
-		
-		$this->add_customizer_frontpage( $wp_customize , $panel );
-		
-	} // end add_customizer_settings*/
-	
-	
-	public function add_customizer_frontpage( $wp_customize , $panel ){
-		
-		$wp_customize->add_setting( 'tremaine_frontpage_image' , array(
-			'default'     => '',
-			'transport'   => 'refresh',
-		) );
-		
-		$wp_customize->add_setting( 'tremaine_frontpage_video_mp4' , array(
-			'default'     => '',
-			'transport'   => 'refresh',
-		) );
-		
-		$wp_customize->add_setting( 'tremaine_frontpage_padding' , array(
-			'default'     => '',
-			'transport'   => 'refresh',
-		) );
-		
-		$wp_customize->add_section( 'tremaine_homepage' , array(
-			'title'     => 'Homepage',
-			'priority'  => 30,
-			'panel' 	=> $panel
-		) );
-		
-		$wp_customize->add_control(
-			new WP_Customize_Image_Control(
-			   $wp_customize,
-			   'tremaine_frontpage_image_control',
-			   array(
-				   'label'      => 'Feature Background Image',
-				   'section'    => 'tremaine_homepage',
-				   'settings'   => 'tremaine_frontpage_image',
-			   )
-		   )
-		);
-		
-		$wp_customize->add_control(
-			new WP_Customize_Control(
-			   $wp_customize,
-			   'tremaine_frontpage_video_mp4_control',
-			   array(
-				   'label'      => 'Video link (.mp4)',
-				   'section'    => 'tremaine_homepage',
-				   'settings'   => 'tremaine_frontpage_video_mp4',
-				   'type'       => 'text',
-			   )
-		   )
-		);
-		
-		$wp_customize->add_control(
-			new WP_Customize_Control(
-			   $wp_customize,
-			   'tremaine_frontpage_padding_control',
-			   array(
-				   'label'      => 'Feature Padding',
-				   'section'    => 'tremaine_homepage',
-				   'settings'   => 'tremaine_frontpage_padding',
-				   'type'       => 'text',
-			   )
-		   )
-		);
-		
-		
-	}
-	
-	
 	public function tremaine_wp_head() {
 		
 		// Add custom action for style
@@ -404,6 +335,14 @@ class Tremaine_Setup {
 	
 	
 	public function register_sidebars(){
+		
+		register_sidebar( array( 
+			'id' 			=> 'header_nav_before', 
+			'name' 			=> 'Header Nav Before',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>', 
+			) 
+		);
 		
 		register_sidebar( array( 
 			'id' 			=> 'tremaine_secondary_nav', 

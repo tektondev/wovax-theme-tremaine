@@ -1,6 +1,6 @@
 <form method="get" class="wx-post-gallery">
 	<div class="tre-gallery property-listing-gallery">
-		<header class="wx-post-gallery-results-header">
+		<?php if ( ! empty( $presets['show_controls'] ) ):?><header class="wx-post-gallery-results-header">
             <h2>
                 <?php echo number_format( $total_results );?> Listings Found
             </h2>
@@ -33,7 +33,7 @@
                     </div>
                 </div><?php endif;?>
             </fieldset>
-        </header>
+        </header><?php endif ?>
 		<ul class="tre-gallery-results results-gallery ">
 			<?php $class = 'wovax-gallery-third'; foreach( $properties as $property ) {
 				
@@ -42,9 +42,9 @@
 			} // end foreach?>
         </ul>
 	</div>
-    <footer class="wx-gallery-footer">
+    <?php if ( ! empty( $presets['show_controls'] ) ):?><footer class="wx-gallery-footer">
     <?php include WOVAXTREMAINEPATH . 'shortcodes/tremaine-listing/includes/include-form-footer.php';?>
-    </footer>
+    </footer><?php endif;?>
     <script>
 		jQuery('body').on('change','.wovax-listings-sort', function(){ jQuery( this ).closest('form').submit(); } );
 	</script>

@@ -16,12 +16,34 @@ class Tremaine_Profile_Template extends Tremaine_Template {
 		//add_theme_support( 'genesis-structural-wraps', array( 'header', 'nav', 'subnav','footer-widgets', 'footer' ) );
 
 		remove_action( 'genesis_loop', 'genesis_do_loop' );
+		
+		//add_action( 'genesis_loop', array( $this, 'do_custom_loop' ), 999 );
 			
 		add_action( 'genesis_after_header' , array( $this , 'the_profile' ), 999 );
 		
 		add_action( 'genesis_after_header' , array( $this , 'the_profile_footer' ), 1000 );
 		
 	} // end edit_template
+	
+	/*function do_custom_loop() {
+ 
+		global $post;
+		
+		while( have_posts() ){
+			
+			$post->post_content = '[wovaxembed listview="yes" mapview="no" accountview="no" pagination="no" posts_per_page="3" meta="Listing_Agent=Jennifer Adams&Status!=Closed"]';
+			
+			the_post();
+			
+			//echo apply_filters('the_content', '');
+			
+			the_content();
+			
+		} // end while
+		
+		remove_action( 'genesis_loop', array( $this, 'do_custom_loop' ), 999 );
+	 
+	} // end do_custom_loop*/
 	
 	
 	public function the_profile(){
@@ -80,6 +102,8 @@ class Tremaine_Profile_Template extends Tremaine_Template {
 		
 		$shortcode_1 = $this->replace_values( $scode_active );
 		$shortcode_2 = $this->replace_values( $scode_closed );
+		
+		$agent_id = get_post_meta( get_the_ID(), '_crest_id', true );
 		
 		include WOVAXTREMAINEPATH . 'parts/people/profile-footer.php';
 		

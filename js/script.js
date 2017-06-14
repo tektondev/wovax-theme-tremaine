@@ -105,6 +105,12 @@ var tremaine = {
 			
 			jQuery("input[data-name='pageurl']").val( url );
 			
+			if ( typeof crest_agent_email !== 'undefined' ){
+				
+				jQuery("input[data-name='agent_email']").val( crest_agent_email );
+				
+			} // end if
+			
 		},
 		
 	},

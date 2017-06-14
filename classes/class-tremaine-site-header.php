@@ -70,6 +70,20 @@ class Tremaine_Site_Header {
 		
 		$html = '<div class="tremaine-header-right">';
 		
+		if ( is_active_sidebar( 'header_nav_before' ) ){
+			
+			ob_start();
+			
+			echo '<div class="header-before-nav-widgets">';
+			
+			dynamic_sidebar( 'header_nav_before' );
+			
+			echo '</div>';
+			
+			$html .= ob_get_clean();
+			
+		} // end if
+		
 		$html .='</div>';
 		
 		echo $html;

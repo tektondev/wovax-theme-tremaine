@@ -7,7 +7,36 @@ class Tremaine_Options {
 		
 		add_action( 'customize_register', array( $this , 'add_customizer' ) );
 		
+		add_action( 'wp_head' , array( $this, 'add_to_header' ), 999 );
+		
 	} // end init
+	
+	
+	public function add_to_header(){
+		
+		$css = array();
+		
+		
+		if ( is_front_page() ){
+			
+			$feature_image = get_theme_mod( 'tremaine_frontpage_image', false );
+			
+			if ( $feature_image ) {
+				
+				$css[] = '@media screen and (max-width: 1023px) { 
+					section.frontpage-feature { background-image: url(' . $feature_image . '); background-repeat: no-repeat; background-position: center; background-size: cover; } 
+					section.frontpage-feature video { display: none; } 
+					} '; 
+				
+			} // end if
+			
+		} // end if
+		
+		$css = '<style>' . implode( ' ' , $css ) . '</style>';
+		
+		echo $css;
+		
+	}
 	
 	
 	public function add_customizer( $wp_customize ){

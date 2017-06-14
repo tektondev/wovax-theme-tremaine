@@ -3,7 +3,7 @@
 <file name="style.css" server="ftp.contributelist.com//public_html/wovax.tektondev.com/wp-content/themes/tremaine/" local="131235504552369632" remote="131235540000000000" Dst="1" />
 <file name="functions.php" server="ftp.contributelist.com//public_html/wovax.tektondev.com/wp-content/themes/tremaine/" local="131235509586710850" remote="131235545400000000" Dst="1" />
 <file name="front-page.php" server="ftp.contributelist.com//public_html/wovax.tektondev.com/wp-content/themes/tremaine/" local="131235130466793761" remote="131235166200000000" Dst="1" />
-<file name="style.css" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131388384106866109" remote="131388492000000000" Dst="2" />
+<file name="style.css" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131419283082579086" remote="131419390800000000" Dst="2" />
 <file name="front-page.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131333165381053146" remote="131333272800000000" Dst="1" />
 <file name="functions.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131347464970126344" remote="131347572600000000" Dst="2" />
 <file name="single-wovaxproperty.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131327581645795576" remote="131314707000000000" Dst="1" />
@@ -11,7 +11,7 @@
 <file name="single-developments.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131327581638653634" remote="131237843400000000" Dst="1" />
 <file name="single-neighborhoods.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131327581639013657" remote="131237752800000000" Dst="1" />
 <file name="gitignore.txt" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131315853266313805" remote="131235160800000000" Dst="1" />
-<file name="single-people.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131347498858453901" remote="131347606800000000" Dst="2" />
+<file name="single-people.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131419214799438087" remote="131419322400000000" Dst="2" />
 <file name="page-import.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131333582249012619" remote="131333689800000000" Dst="1" />
 <file name="frame.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131368911352138908" remote="131369019000000000" Dst="2" />
 <file name="404.php" server="216.120.250.9/wp-content/themes/wovax-theme-tremaine/" local="131333056272327740" remote="131333164200000000" Dst="1" />

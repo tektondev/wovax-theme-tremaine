@@ -5,7 +5,8 @@ class Shortcode_Tremaine_People extends Tremaine_Shortcode {
 	protected $tag = 'tremaine_people';
 	
 	protected $default_atts = array(
-		'ids' => false,
+		'ids' 	=> false,
+		'link' 	=> 0,
 		);
 	
 	
@@ -13,7 +14,7 @@ class Shortcode_Tremaine_People extends Tremaine_Shortcode {
 		
 		$people = $this->get_people( $atts );
 		
-		$people_cards = $this->get_people_cards( $people );
+		$people_cards = $this->get_people_cards( $people, $atts );
 		
 		if ( ! empty( $people_cards ) && count( $people_cards ) < 2  ){
 			
@@ -67,12 +68,20 @@ class Shortcode_Tremaine_People extends Tremaine_Shortcode {
 				$img_url_array = wp_get_attachment_image_src( $img_id, 'large', true );
 				$img_url = $img_url_array[0];
 				
+				$photo = get_post_meta( get_the_ID(), '_primary_photo_url_manual', true );
+				
+				if( empty( $photo ) ){
+					
+					$photo = ( get_post_meta( get_the_ID(), '_primary_photo_url', true ) );
+					
+				} // end if
+				
 				$person = array(
 					'title' 		=> get_the_title(),
 					'content' 		=> get_the_content(),
 					'excerpt' 		=> get_the_excerpt(),
 					'link' 			=> get_post_permalink(),
-					'img' 			=> get_post_meta( get_the_ID(), '_primary_photo_url', true ),
+					'img' 			=> $photo,
 					'position' 		=> get_post_meta( get_the_ID(), '_position', true ),
 					'display_name'  => get_post_meta( get_the_ID(), '_display_name', true ),
 					'first_name'  	=> get_post_meta( get_the_ID(), '_first_name', true ),
@@ -100,7 +109,7 @@ class Shortcode_Tremaine_People extends Tremaine_Shortcode {
 	} // end get_peoples
 	
 	
-	public function get_people_cards( $people ){
+	public function get_people_cards( $people, $atts ){
 		
 		$people_cards = array();
 		

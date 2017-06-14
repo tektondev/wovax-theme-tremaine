@@ -5,14 +5,17 @@ class Shortcode_Tremaine_Listing extends Tremaine_Shortcode {
 	protected $tag = 'tremaine_listing';
 	
 	protected $default_atts = array(
-			'paged' => 1,
-			'posts_per_page' => 12,
-			'display_as' => 'gallery',
-			'keyword' => '',
-			'sort_by' => 'date-desc',
-			'custom_field' => '',
-			'custom_field_value' => '',
-			'compare' => '',
+			'paged' 				=> 1,
+			'posts_per_page' 		=> 12,
+			'display_as' 			=> 'gallery',
+			'keyword' 				=> '',
+			'sort_by' 				=> 'date-desc',
+			'custom_field' 			=> '',
+			'custom_field_value' 	=> '',
+			'compare' 				=> '',
+			'property_status' 		=> 'Active,Pending',
+			'show_controls'  		=> 1,
+			'show_header' 			=> 1,
 		);
 	
 	
@@ -39,6 +42,12 @@ class Shortcode_Tremaine_Listing extends Tremaine_Shortcode {
 		
 		$sort_options = get_option('wovax_sort_fields');
 		
+		//if ( $atts['status'] ) {
+		
+			//$properties = $this->filter_by_status( $properties, $atts['status'] );
+		
+		//} // end if
+		
 		global $tremaine_modals;
 		
 		ob_start();
@@ -55,14 +64,17 @@ class Shortcode_Tremaine_Listing extends Tremaine_Shortcode {
 	protected function get_presets( $atts ){
 		
 		$defaults = array(
-			'paged' => 1,
-			'posts_per_page' => 12,
-			'display_as' => 'gallery',
-			'keyword' => '',
-			'sort_by' => 'date-desc',
-			'custom_field' => '',
-			'custom_field_value' => '',
-			'compare' => '',
+			'paged' 				=> 1,
+			'posts_per_page' 		=> 12,
+			'display_as' 			=> 'gallery',
+			'keyword' 				=> '',
+			'sort_by' 				=> 'date-desc',
+			'custom_field' 			=> '',
+			'custom_field_value' 	=> '',
+			'compare' 				=> '',
+			'property_status' 		=> 'Active,Pending',
+			'show_controls' 		=> 1,
+			'show_header' 			=> 1,
 		);
 		
 		if ( isset( $_GET['cpage'] ) ) $atts['paged'] = sanitize_text_field( $_GET['cpage'] );
@@ -94,23 +106,37 @@ class Shortcode_Tremaine_Listing extends Tremaine_Shortcode {
 		
 		if ( ! empty( $presets['sort_by'] ) ) $this->add_sort_args( $args, $presets );
 		
+		$status = explode( ',', $presets['property_status'] );
+		
+		if ( is_array( $status ) ){
+			
+			$args['meta_query'][] = array(
+				'key'     => 'Status',
+				'value'   => $status,
+				'compare' => 'IN',
+			);
+		
+		} // end if
+		
 		if ( ! empty( $presets['custom_field'] ) ){
 			
-			$args['meta_query'] = array(
-				'relation' => 'OR',
-			);
+			$args['meta_query']['relation'] = 'AND';
+			
+			$field_query['relation'] = 'OR';
 			
 			$field_values = explode( ',' , $presets['custom_field_value'] );
 			
 			foreach( $field_values as $f_value ){
 				
-				$args['meta_query'][] = array(
+				$field_query[] = array(
 					'key'     => $presets['custom_field'],
 					'value'   => $f_value,
 					'compare' => 'LIKE',
 				);
 				
 			} // end foreach
+			
+			$args['meta_query'][] = $field_query;
 			
 		} // end if
 		
@@ -119,6 +145,13 @@ class Shortcode_Tremaine_Listing extends Tremaine_Shortcode {
 		return $the_query;
 		
 	} // end get_query
+	
+	
+	public function add_status_query( $query ){
+		
+		$query_args = array();
+		
+	} // end add_status_query
 	
 	
 	public function add_sort_args( &$args, $presets ){
@@ -145,5 +178,30 @@ class Shortcode_Tremaine_Listing extends Tremaine_Shortcode {
 		} // end switch
 		
 	} // end add_sort_args
+	
+	
+	protected function filter_by_status( $properties, $status ){
+		
+		$filtered_properties = array();
+		
+		$status_array = explode( $status );
+		
+		$status_array = array_map( 'strtolower', $status_array );
+		
+		foreach( $properties as $index => $property ){
+			
+			$p_stat = strtolower( $property->get_status() );
+			
+			if ( in_array( $p_stat, $status_array ) ){
+				
+				$filtered_properties[] = $property;
+				
+			} // end if
+			
+		} // end foreach
+		
+		return $filtered_properties;
+		
+	}
 	
 } // end Tremaine_Shortcode_Agents
