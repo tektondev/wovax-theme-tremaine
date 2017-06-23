@@ -1306,6 +1306,15 @@ ul.tremaine-office-gallery {
 		padding: 40px;
 		box-sizing: border-box;
 	}
+	.tre-secondary-nav {
+		text-align: center;
+	}
+	.tre-secondary-nav .widget {
+		display: none;
+	}
+	.tre-secondary-nav .widget.widget_nav_menu {
+		display: inline-block;
+	}
 }
 
 @media print {

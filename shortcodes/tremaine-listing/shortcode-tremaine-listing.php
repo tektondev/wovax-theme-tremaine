@@ -42,6 +42,8 @@ class Shortcode_Tremaine_Listing extends Tremaine_Shortcode {
 		
 		$sort_options = get_option('wovax_sort_fields');
 		
+		$menu_items = wp_get_nav_menu_items( 'Listing Menu' );
+		
 		//if ( $atts['status'] ) {
 		
 			//$properties = $this->filter_by_status( $properties, $atts['status'] );

@@ -5,6 +5,15 @@
                 <?php echo number_format( $total_results );?> Listings Found
             </h2>
             <fieldset class="wx-gallery-controls">
+            	<?php if ( isset( $_GET['test'] ) ):?>
+                <div class="wx-gallery-field wx-sort-field">
+                    <select class="wovax-listings-type" name="property_type">
+                    	<?php foreach( $menu_items as $index => $menu_item ) : ?>
+						<option value="<?php echo $menu_item->url;?>" ><?php echo $menu_item->title;?></option>
+						<?php endforeach;?>
+                    </select>
+                </div>
+				<?php endif ?>
                 <div class="wx-gallery-field wx-sort-field">
                     <label>Sort By</label>
                     <select class="wovax-listings-sort" name="sort_by">

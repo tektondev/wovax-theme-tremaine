@@ -37,6 +37,8 @@ class Tremaine {
 		
 		$this->add_shortcodes();
 		
+		include_once 'updated-classes/class-tremaine-theme.php';
+		
 		require_once 'classes/class-tremaine-shortcode.php'; // abstract class
 		require_once 'classes/class-tremaine-template.php'; // abstract class
 		require_once 'classes/class-tremaine-posttype.php'; // abstract class
