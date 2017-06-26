@@ -61,6 +61,14 @@ class Shortcode_Tremaine_CREST_People_Gallery extends Tremaine_Shortcode {
 					$website = get_post_meta( get_the_ID(),  '_primary_web_url', true );
 					$link = get_post_permalink();
 					
+					$position_low = strtolower( $position );
+			
+					if ( strpos( $position_low, 'sales associate' ) !== false ){
+						
+						$position = 'Broker Associate';
+						
+					} // end if
+					
 					if ( empty( $phone ) ){
 					
 						$phone = get_post_meta( get_the_ID(),  '_phone_additional', true );
