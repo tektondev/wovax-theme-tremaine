@@ -89,6 +89,14 @@ class Shortcode_Tremaine_People extends Tremaine_Shortcode {
 					
 				);
 				
+				$position_low = strtolower( $person[ 'position' ] );
+			
+				if ( strpos( $position_low, 'sales associate' ) !== false ){
+					
+					$person[ 'position' ] = 'Broker Associate';
+					
+				} // end if
+				
 				if ( empty( $person['display_name' ] ) ) $person['display_name' ] = $person['first_name' ] . ' ' . $person['last_name' ];
 				
 				if ( empty( $person['excerpt'] ) ) $person['excerpt'] = $person['content'];
