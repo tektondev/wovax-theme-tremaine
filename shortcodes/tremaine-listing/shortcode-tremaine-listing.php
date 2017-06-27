@@ -16,6 +16,7 @@ class Shortcode_Tremaine_Listing extends Tremaine_Shortcode {
 			'property_status' 		=> 'Active,Pending',
 			'show_controls'  		=> 1,
 			'show_header' 			=> 1,
+			'sort_types'			=> 0,
 		);
 	
 	
@@ -42,7 +43,9 @@ class Shortcode_Tremaine_Listing extends Tremaine_Shortcode {
 		
 		$sort_options = get_option('wovax_sort_fields');
 		
-		$menu_items = wp_get_nav_menu_items( 'Listing Menu' );
+		$sort_types = ( ! empty( $atts['sort_types'] ) )? 1 : 0;
+		
+		$property_type = ( ! empty( $_GET['property_type'] ) ) ? sanitize_text_field( $_GET['property_type'] ) : '';
 		
 		//if ( $atts['status'] ) {
 		
@@ -120,7 +123,17 @@ class Shortcode_Tremaine_Listing extends Tremaine_Shortcode {
 		
 		} // end if
 		
+		if( ! empty( $_GET['property_type'] ) && ( $_GET['property_type'] !== 'any' ) ){
+			
+			$property_type = sanitize_text_field( $_GET['property_type'] );
+			
+			$args['meta_query'][] = $this->get_property_type_query( $property_type );
+			
+		} // end if
+		
 		if ( ! empty( $presets['custom_field'] ) ){
+			
+			$field_query = array();
 			
 			$args['meta_query']['relation'] = 'AND';
 			
@@ -147,6 +160,92 @@ class Shortcode_Tremaine_Listing extends Tremaine_Shortcode {
 		return $the_query;
 		
 	} // end get_query
+	
+	
+	protected function get_property_type_query( $property_type ){
+		
+		$query = array();
+		
+		switch ( $property_type ){
+			
+			case 'single-family':
+				$query = array(
+					'key'     => 'Sub-type',
+					'value'   => 'Single Family',
+					'compare' => 'LIKE',
+				);
+				break;
+				
+			case 'commercial':
+				$query = array(
+					'key'     => 'Property_Type',
+					'value'   => 'Commercial',
+					'compare' => 'LIKE',
+				);
+				break;
+			
+			case 'condo':
+				$query = array(
+					'key'     => 'Sub-type',
+					'value'   => 'Condominium',
+					'compare' => 'LIKE',
+				);
+				break;
+				
+			case 'luxury':
+				$query = array(
+					'key'     => 'Price',
+					'value'   => 999999,
+					'compare' => '>',
+					'type' => 'numeric',
+				);
+				break;
+			case 'development':
+				$address_search = array( 'relation' => 'OR' );
+				$dev_search_text = $this->get_development_search_text_array();
+				foreach( $dev_search_text as $text ){
+					$address_search[] = array(
+						'key'     => 'Address',
+						'value'   => $text,
+						'compare' => 'LIKE',
+					);
+				} // End foreach
+				$query = $address_search;
+				break;
+		} // end switch
+		
+		return $query;
+		
+	} // end get_property_type_query
+	
+	
+	public function get_development_search_text_array(){
+		
+		$search_text = array();
+		
+		$post_array = get_posts( 
+			array( 
+				'post_type' 		=> 'developments', 
+				'post_status' 		=> 'publish', 
+				'posts_per_page' 	=> -1 
+			) 
+		);
+		
+		foreach( $post_array as $dpost ){
+			
+			$text = get_post_meta( $dpost->ID, '_prop_search_text', true );
+			
+			if ( ! empty( $text ) ){
+				
+				$search_text[] = $text;
+				
+			} // End if
+			
+		} // End foreach
+		
+		return $search_text;
+		
+	} // end get_development_search_text_array
 	
 	
 	public function add_status_query( $query ){

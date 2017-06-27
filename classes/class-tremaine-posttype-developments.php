@@ -19,6 +19,7 @@ class Tremaine_Posttype_Developments extends Tremaine_Posttype {
 		'_logo'					=> array('default' => '', 'type' => 'text' ),
 		'_modal_id' 			=> array('default' => '', 'type' => 'text' ),
 		'_modal_link_text' 		=> array('default' => '', 'type' => 'text' ),
+		'_prop_search_text' 	=> array('default' => '', 'type' => 'text' ),
 	);
 	
 	protected $args = array(

@@ -5,7 +5,7 @@ class Tremaine {
 	
 	private static $instance;
 	
-	public static $version = '0.1.0';
+	public static $version = '0.1.1';
 	
 	
 	public static function get_instance(){

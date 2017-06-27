@@ -46,6 +46,10 @@
         </select>
     </div>
     <div class="wx-field">
+    	<label>Property Search Text</label>
+    	<input type="text" name="_prop_search_text" value="<?php echo $settings['_prop_search_text'];?>" />
+    </div>
+    <div class="wx-field">
     	<label>Logo</label>
     	<input type="text" name="_logo" value="<?php echo $settings['_logo'];?>" />
     </div>
