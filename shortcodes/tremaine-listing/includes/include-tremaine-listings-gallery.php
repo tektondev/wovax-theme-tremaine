@@ -1,16 +1,20 @@
-<form method="get" class="wx-post-gallery">
+<form method="get" class="wx-post-gallery tremaine-listing-gallery">
 	<div class="tre-gallery property-listing-gallery">
 		<?php if ( ! empty( $presets['show_controls'] ) ):?><header class="wx-post-gallery-results-header">
             <h2>
                 <?php echo number_format( $total_results );?> Listings Found
             </h2>
             <fieldset class="wx-gallery-controls">
-            	<?php if ( isset( $_GET['test'] ) ):?>
+            	<?php if ( ! empty( $sort_types ) ):?>
                 <div class="wx-gallery-field wx-sort-field">
-                    <select class="wovax-listings-type" name="property_type">
-                    	<?php foreach( $menu_items as $index => $menu_item ) : ?>
-						<option value="<?php echo $menu_item->url;?>" ><?php echo $menu_item->title;?></option>
-						<?php endforeach;?>
+                <label>Property Type</label>
+                    <select class="wovax-listings-filter" name="property_type">
+                    	<option value="any" <?php selected( $property_type, 'any') ?>>Any</option>
+                        <option value="luxury" <?php selected( $property_type, 'luxury') ?>>Luxury</option>
+                        <option value="condo" <?php selected( $property_type, 'condo') ?>>Condos</option>
+						<option value="single-family" <?php selected( $property_type, 'single-family') ?>>Single Family</option>
+                        <option value="commercial" <?php selected( $property_type, 'commercial') ?>>Commercial</option>
+                        <option value="development" <?php selected( $property_type, 'development') ?>>Developments</option>
                     </select>
                 </div>
 				<?php endif ?>
@@ -55,6 +59,6 @@
     <?php include WOVAXTREMAINEPATH . 'shortcodes/tremaine-listing/includes/include-form-footer.php';?>
     </footer><?php endif;?>
     <script>
-		jQuery('body').on('change','.wovax-listings-sort', function(){ jQuery( this ).closest('form').submit(); } );
+		jQuery('body').on('change','.wovax-listings-sort, .wovax-listings-filter', function(){ jQuery( this ).closest('form').submit(); } );
 	</script>
 </form>

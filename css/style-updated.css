@@ -666,6 +666,20 @@ ul.tremaine-office-gallery {
 	box-sizing: border-box;
 	vertical-align: top;
 }
+.tremaine-listing-gallery .tre-gallery > header h2 {
+	display: block;
+}
+.wx-post-gallery.tremaine-listing-gallery h2 {
+    float: none;
+}
+.wx-post-gallery.tremaine-listing-gallery .wx-gallery-controls {
+    margin-left: 0;
+}
+.wx-post-gallery.tremaine-listing-gallery .wx-gallery-controls>.wx-gallery-field {
+    margin-left: 25px;
+	margin-bottom: 8px;
+}
+
 
 
 /* Property Cards
