@@ -5,7 +5,7 @@ class Tremaine {
 	
 	private static $instance;
 	
-	public static $version = '0.1.1';
+	public static $version = '0.1.2';
 	
 	
 	public static function get_instance(){
@@ -52,6 +52,8 @@ class Tremaine {
 		require_once 'classes/class-tremaine-post-type-office.php';  
 		require_once 'classes/class-tremaine-property-factory.php';
 		require_once 'post-types/video/post-type-video.php';
+		
+		include_once 'updated-classes/class-tremaine-sidebars.php';
 		
 		$theme_templates = new Tremaine_Theme_Templates();
 		$theme_templates->init();

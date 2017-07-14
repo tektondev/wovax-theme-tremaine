@@ -3,7 +3,7 @@
 	Description: Custom child theme for <a href="http://wovax.com">Wovax</a> and the <a href="http://genesistheme.com">Genesis Framework</a>.
 	Author:      Danial Bleile
 	Author URI:  http://tektondev.com
-	Version:     0.1.13
+	Version:     0.1.14
 	License:     GPL-2.0+
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	Template:    genesis
@@ -3138,7 +3138,7 @@ input[type="submit"].tre-button-light {
 	.desktop-only {
 		display: none;
 	}
-	.genesis-nav-menu .menu-item > .sub-menu {
+	/*.genesis-nav-menu .menu-item > .sub-menu {
 		border-top: 1px solid #eee;
 		position: relative;
 		left: 0;
@@ -3155,7 +3155,7 @@ input[type="submit"].tre-button-light {
 	
 	.genesis-nav-menu .menu-item > .sub-menu a {
 		width: auto;
-	}
+	}*/
 
 	.site-inner,
 	.wrap {
@@ -3479,8 +3479,17 @@ input[type="submit"].tre-button-light {
 		font-family: fontAwesome;
 		cursor: pointer;
 	}
-	
 	.header-widget-area {
+		display: none;
+	}
+	.header-widget-area {
+		display: none;
+	}
+	#site-responsive-menu {
+		display: block !important;
+	}
+
+	/*.header-widget-area {
 		position: absolute;
 		left: 0;
 		width: 250px !important;
@@ -3488,7 +3497,7 @@ input[type="submit"].tre-button-light {
 		top: 100%;
 		z-index: 200;
 		border-right: 1px solid #777;
-	}
+	}*/
 	
 	.header-widget-area:hover .widget,
 	.header-widget-area:hover .wovax-custom-menu-link {
@@ -3783,6 +3792,7 @@ input[type="submit"].tre-button-light {
 	.tre-property-alerts .tre-property-alerts-fields {
 		margin-left: 30px;
 	}
+	
 
 }
 

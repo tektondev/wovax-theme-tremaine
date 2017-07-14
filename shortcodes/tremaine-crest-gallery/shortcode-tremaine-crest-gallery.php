@@ -7,6 +7,12 @@ class Shortcode_Tremaine_CREST_People_Gallery extends Tremaine_Shortcode {
 	protected $default_atts = array(
 		'ids' => false,
 		);
+		
+	public function __construct(){
+		
+		require_once WOVAXTREMAINEPATH . 'updated-classes/class-tremaine-person.php';
+		
+	}  // End __construct
 	
 	
 	public function render_shortcode( $atts , $content, $tag, $atts_orig ){
@@ -49,25 +55,24 @@ class Shortcode_Tremaine_CREST_People_Gallery extends Tremaine_Shortcode {
 				while ( $query->have_posts() ){
 					
 					$query->the_post();
+					
+					$person = new Tremaine_Person( $query->post );
+					
 					$image = get_post_meta( get_the_ID(),  '_primary_photo_url', true );
 					if ( empty( $image ) ){
 						$image = WOVAXTREMAINEURL . 'shortcodes/tremaine-crest-gallery/images/personplaceholder.gif';
 					} // end if
 					$office_id = get_post_meta( get_the_ID(),  '_office_id', true );
 					$name = get_post_meta( get_the_ID(),  '_display_name', true );
-					$position = get_post_meta( get_the_ID(),  '_position', true );
+					//$position = get_post_meta( get_the_ID(),  '_position', true );
+					$position = $person->get_position_title();
+					
 					$email = get_post_meta( get_the_ID(),  '_primary_email', true );
 					$phone = get_post_meta( get_the_ID(),  '_primary_phone', true );
 					$website = get_post_meta( get_the_ID(),  '_primary_web_url', true );
 					$link = get_post_permalink();
 					
-					$position_low = strtolower( $position );
-			
-					if ( strpos( $position_low, 'sales associate' ) !== false ){
-						
-						$position = 'Broker Associate';
-						
-					} // end if
+					
 					
 					if ( empty( $phone ) ){
 					

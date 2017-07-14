@@ -1,4 +1,7 @@
 <form method="get" class="wx-post-gallery tremaine-listing-gallery">
+	<?php if ( ! empty( $_GET['property_status'] ) ) :?>
+	<input type="hidden" name="property_status" value="<?php echo $_GET['property_status'];?>" />
+	<?php endif;?>
 	<div class="tre-gallery property-listing-gallery">
 		<?php if ( ! empty( $presets['show_controls'] ) ):?><header class="wx-post-gallery-results-header">
             <h2>
@@ -47,6 +50,7 @@
                 </div><?php endif;?>
             </fieldset>
         </header><?php endif ?>
+        <?php if ( ! empty( $properties ) ):?>
 		<ul class="tre-gallery-results results-gallery ">
 			<?php $class = 'wovax-gallery-third'; foreach( $properties as $property ) {
 				
@@ -54,6 +58,7 @@
 				
 			} // end foreach?>
         </ul>
+        <?php endif;?>
 	</div>
     <?php if ( ! empty( $presets['show_controls'] ) ):?><footer class="wx-gallery-footer">
     <?php include WOVAXTREMAINEPATH . 'shortcodes/tremaine-listing/includes/include-form-footer.php';?>

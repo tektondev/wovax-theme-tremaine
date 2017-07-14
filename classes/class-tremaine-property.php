@@ -211,7 +211,7 @@ class Tremaine_Property {
 		
 		$this->set_features( $post->ID );
 		
-		if ( $this->square_footage && $this->price ){
+		if ( $this->square_footage && $this->price && is_numeric( $this->square_footage ) && is_numeric( $this->price ) ){
 			
 			$this->ppsf = money_format( '%.0n' , (int) round( ( $this->price / $this->square_footage ) ) );
 			

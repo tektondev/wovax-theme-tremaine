@@ -88,6 +88,21 @@ class Shortcode_Tremaine_Listing extends Tremaine_Shortcode {
 		
 		if ( isset( $_GET['sort_by'] ) ) $atts['sort_by'] = sanitize_text_field( $_GET['sort_by'] );
 		
+		if ( isset( $_GET['property_status'] ) ){
+			
+			switch( $_GET['property_status'] ){
+				
+				case 'active':
+					$atts['property_status'] = 'Active,Pending';
+					break;
+				case 'sold':
+					$atts['property_status'] = 'Sold,Closed';
+					break;
+				
+			} // End switch
+			
+		} // end if
+		
 		$presets = shortcode_atts( $defaults , $atts );
 		
 		return $presets;

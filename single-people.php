@@ -84,28 +84,32 @@ class Tremaine_Profile_Template extends Tremaine_Template {
 	
 	public function the_profile_footer(){
 		
-		$scode_active = get_post_meta( get_the_ID(),  '_shortcode_active_override', true );
-			
-		if ( empty( $scode_active ) ){
-			
-			$scode_active = get_theme_mod('crest_profile_shortcode_1', '');
-			
-		} // end if
+		if ( empty( $_GET['property_status'] ) ) {
 		
-		$scode_closed = get_post_meta( get_the_ID(),  '_shortcode_closed_override', true );
+				$scode_active = get_post_meta( get_the_ID(),  '_shortcode_active_override', true );
+					
+				if ( empty( $scode_active ) ){
+					
+					$scode_active = get_theme_mod('crest_profile_shortcode_1', '');
+					
+				} // end if
+				
+				$scode_closed = get_post_meta( get_the_ID(),  '_shortcode_closed_override', true );
+				
+				if ( empty( $scode_closed ) ){
+					
+					$scode_closed = get_theme_mod('crest_profile_shortcode_2', '');
+					
+				} // end if
+				
+				$shortcode_1 = $this->replace_values( $scode_active );
+				$shortcode_2 = $this->replace_values( $scode_closed );
+				
+				$agent_id = get_post_meta( get_the_ID(), '_crest_id', true );
+				
+				include WOVAXTREMAINEPATH . 'parts/people/profile-footer.php';
 		
-		if ( empty( $scode_closed ) ){
-			
-			$scode_closed = get_theme_mod('crest_profile_shortcode_2', '');
-			
-		} // end if
-		
-		$shortcode_1 = $this->replace_values( $scode_active );
-		$shortcode_2 = $this->replace_values( $scode_closed );
-		
-		$agent_id = get_post_meta( get_the_ID(), '_crest_id', true );
-		
-		include WOVAXTREMAINEPATH . 'parts/people/profile-footer.php';
+		} //End if
 		
 	}
 	

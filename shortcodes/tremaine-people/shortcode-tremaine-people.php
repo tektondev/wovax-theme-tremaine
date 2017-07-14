@@ -8,6 +8,12 @@ class Shortcode_Tremaine_People extends Tremaine_Shortcode {
 		'ids' 	=> false,
 		'link' 	=> 0,
 		);
+		
+	public function __construct(){
+		
+		require_once WOVAXTREMAINEPATH . 'updated-classes/class-tremaine-person.php';
+		
+	}  // End __construct
 	
 	
 	public function render_shortcode( $atts , $content, $tag, $atts_orig ){
@@ -76,13 +82,16 @@ class Shortcode_Tremaine_People extends Tremaine_Shortcode {
 					
 				} // end if
 				
+				$person = new Tremaine_Person( $the_query->post );
+				
 				$person = array(
+					'post'			=> $the_query->post,
 					'title' 		=> get_the_title(),
 					'content' 		=> get_the_content(),
 					'excerpt' 		=> get_the_excerpt(),
 					'link' 			=> get_post_permalink(),
 					'img' 			=> $photo,
-					'position' 		=> get_post_meta( get_the_ID(), '_position', true ),
+					'position' 		=> $person->get_position_title(),
 					'display_name'  => get_post_meta( get_the_ID(), '_display_name', true ),
 					'first_name'  	=> get_post_meta( get_the_ID(), '_first_name', true ),
 					'last_name'  	=> get_post_meta( get_the_ID(), '_last_name', true ),

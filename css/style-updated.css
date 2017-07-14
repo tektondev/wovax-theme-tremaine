@@ -12,6 +12,8 @@ Layouts
 Modals
 - Share Modal
 - Property Modal
+Menus
+- site-responsive-menu
 Neighborhoods
 Office Gallery
 Overrides
@@ -371,6 +373,61 @@ body.page .content-sidebar-wrap {
 	padding: 70px 0 40px;
 }
 
+/* Menus
+----------------------------------------------------------------------- */
+#site-responsive-menu {
+	position: absolute;
+	z-index: 999999;
+	left: 0;
+	display: none;
+}
+#site-responsive-menu .menu-icon {
+	color: #202c49;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    border-right: 1px solid #ddd;
+    font-family: fontAwesome;
+    cursor: pointer;
+	box-sizing: border-box;
+}
+#site-responsive-menu .menu-wrapper {
+    width: 250px;
+    background-color: #1f3652;
+    border-right: 1px solid #777;
+	display: none;
+}
+#site-responsive-menu .menu-wrapper .menu-item > a {
+    display: block;
+    position: relative;
+    padding: 20px 30px;
+    border-top: 1px solid #535f7c;
+    border-bottom: 1px solid #1a2132;
+    color: #42a5f5;
+    font-size: 1.6rem;
+    background-image: none;
+    font-weight: 300;
+	text-decoration: none;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	 word-wrap: break-word;
+}
+#site-responsive-menu .menu-wrapper .menu-item-has-children > a {
+    background-image: url(//allchicagocondos.com/wp-content/themes/wovax-theme-tremaine/images/plus.png);
+    background-position: center right;
+    background-repeat: no-repeat;
+}
+#site-responsive-menu .menu-wrapper .menu-item > ul {
+	display: none;
+}
+#site-responsive-menu .menu-wrapper .sub-menu .menu-item > a {
+    background-color: #fff;
+    border-top: none;
+	border-bottom: 1px solid #eee;
+    font-size: 1.4rem;
+    position: relative;
+}
 /* Neighborhoods
 ----------------------------------------------------------------------- */
 
@@ -1249,6 +1306,12 @@ ul.tremaine-office-gallery {
     .wx-post-gallery .wx-gallery-controls .wx-gallery-field.wx-sort-field {
 		display: block;
 		margin-top: 0;
+	}
+	.tremaine-modal-image-left.has-image .tremaine-modal-content {
+    	margin-left: 0;
+	}
+	.tremaine-modal-image-left .tremaine-modal-bg-image-wrapper {
+		display:none;
 	}
 }
 

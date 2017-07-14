@@ -14,7 +14,6 @@ class Tremaine_Setup {
 		
 		add_action( 'init' , array( $this , 'register_sidebars' ) );
 		
-		
 		add_action( 'wp_enqueue_scripts' , array( $this , 'add_custom_scripts' ), 99 );
 		
 		add_action( 'wp' , array( $this , 'tekton_builder_overrides' ), 10 );
@@ -38,7 +37,7 @@ class Tremaine_Setup {
 	} // end __construct
 	
 	
-	public function title_filter( $where, &$wp_query ){
+	public function title_filter( $where, $wp_query ){
 		
 		global $wpdb;
 		

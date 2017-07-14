@@ -15,12 +15,21 @@ class Tremaine_Theme {
 		add_filter( 'gform_field_value_agent_email', array( $this, 'populate_agent_email' ) );
 
 		add_filter( 'gform_field_value_listing_agency', array( $this, 'populate_listing_agency' ) );
+			
+		add_action( 'genesis_before_header' , array( $this, 'add_responsive_menu' ) );
 
 
 
 	} // end __construct
 
 	
+	public function add_responsive_menu(){
+		
+		global $post;
+		
+		include locate_template( 'parts/header/responsive-menu.php', false );
+		
+	} // End add_responsive_menu
 
 	
 
